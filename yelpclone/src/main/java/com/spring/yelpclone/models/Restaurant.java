@@ -10,7 +10,6 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -37,14 +36,12 @@ public class Restaurant {
 	@NotEmpty(message = "State is required")
 	private String state;
 	
-    @NotNull
-    @Size(min=5, max=5, message = "Valid U.S. Zip code should be 5 digits")
-	private Integer zipCode;
+    @Size(min=5, max=5, message = "Valid ZipCode should be 5 digits")
+	private String zipCode;
     
 	@NotEmpty(message = "Category is required")
     private String category;
     
-    @Size(min=10, max=11, message = "Phone# shuold be 10-11 digits(if includes 1")
 	private String phone;
 	
 	private String webAddress;
@@ -103,10 +100,10 @@ public class Restaurant {
 	public void setState(String state) {
 		this.state = state;
 	}
-	public Integer getZipCode() {
+	public String getZipCode() {
 		return zipCode;
 	}
-	public void setZipCode(Integer zipCode) {
+	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
 	public String getCategory() {

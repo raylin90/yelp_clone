@@ -1,21 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Yelp Clone</title>
+<title>Yum!</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
-
+<link rel="short cut icon" type="image/png" href="../images/favicon.png">
 </head>
 
 <body>
     <!-- "navbar-expand-lg" define how fast will navbar collapse -->
     <nav class="navbar navbar-expand-sm navbar-light " style="background-color: #e3f2fd;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/"><img src="./images/logo.png" alt="logo.png" class="rounded-circle" style="width: 50px;"></a>
+            <a class="navbar-brand" href="/"><img src="../images/logo.png" alt="logo.png" class="rounded-circle" style="width: 50px;"></a>
             <!-- hiddden button when window collapse -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -26,6 +26,7 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/">Home</a>
                     </li>
+                    <!-- navbar drop down link -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Action
@@ -33,7 +34,7 @@
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#">Write a Review</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Create a Restaurant</a></li>
+                        <li><a class="dropdown-item" href="/create/restaurant">Create a Restaurant</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -46,6 +47,7 @@
         </div>
     </nav>
 
+    <!-- advertise pivture and search bar -->
     <div class="text-center position-relative">
         <img src="../images/adv2.png" alt="main adv." class="img-fluid rounded">
         <form class="d-flex position-absolute bottom-50 end-50">
@@ -54,6 +56,7 @@
         </form>
     </div>
 
+    <!-- main content -->
     <div class="container mt-5">
         <h4 class="text-center">Top Restaurant by Cuisine Type:</h4>
         
@@ -112,6 +115,8 @@
                 </div>
             </div>
         </div>
+
+        <p class="fw-lighter text-center mt-5">Responsive Yelp Clone Web Application</p>
     </div>
 </body>
 </html>
