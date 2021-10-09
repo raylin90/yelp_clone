@@ -1,5 +1,6 @@
 package com.spring.yelpclone.services;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.spring.yelpclone.models.Restaurant;
@@ -13,7 +14,16 @@ public class RestaurantService {
 	
 	// save a restaurant to database
 	public Restaurant saveRestaurant(Restaurant restaurant) {
-    	System.out.println("HERE 2");
 		return this.restaurantRepo.save(restaurant);
+	}
+	
+	// find all restaurants at database
+	public List<Restaurant> findAllRestaurant() {
+		return (List<Restaurant>) this.restaurantRepo.findAll();
+	}
+	
+	// find one restaurant
+	public Restaurant findOneRestaurant(Long id) {
+		return this.restaurantRepo.findById(id).orElse(null);
 	}
 }

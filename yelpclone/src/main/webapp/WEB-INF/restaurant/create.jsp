@@ -1,21 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix='form' uri='http://www.springframework.org/tags/form'%>
-    <!DOCTYPE html>
+
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Create a New Restaurant</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
-<link rel="short cut icon" type="image/png" href="../images/favicon.png">
+<link rel="short cut icon" type="image/png" href="/images/favicon.png">
 </head>
 
 <body>
     <!-- "navbar-expand-lg" define how fast will navbar collapse -->
     <nav class="navbar navbar-expand-sm navbar-light " style="background-color: #e3f2fd;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/"><img src="../images/logo.png" alt="logo.png" class="rounded-circle" style="width: 50px;"></a>
+            <a class="navbar-brand" href="/"><img src="/images/logo.png" alt="logo.png" class="rounded-circle" style="width: 50px;"></a>
             <!-- hiddden button when window collapse -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
