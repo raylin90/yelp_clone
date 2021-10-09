@@ -41,8 +41,9 @@
                 </ul>
                 <!-- navbar search and submit -->
                 <div>
-                    <a class="btn btn-primary" href="">Login</a>
+                    <a class="btn btn-primary" href="/login">Login</a>
                     <a class="btn btn-outline-success me-3" href="/register">Sign Up</a>
+                    <a class="btn btn-danger" href="/logout">Logout</a>
                 </div>
             </div>
         </div>

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>New User</title>
+<title>Login</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
 <link rel="short cut icon" type="image/png" href="/images/favicon.png">
@@ -52,43 +52,20 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-6 text-center">
-                <h3>Sign Up for Yum!</h3>
-                <p>Connect with local restaurants</p>
+                <h3>Login to Yum!</h3>
 
-
-                <form:form action='/signup' method='post' modelAttribute='newUser'>
-                <p>
-                    <form:label path='firstName' class="form-label">First Name: </form:label>
-                    <form:input path='firstName' class="form-control"/>
-                    <form:errors path='firstName' class="text-danger"/>
-                </p>
-                <p>
-                    <form:label path='lastName' class="form-label">Last Name: </form:label>
-                    <form:input path='lastName' class="form-control"/>
-                    <form:errors path='lastName' class="text-danger"/>
-                </p>
+                <form:form action='/return/user' method='post' modelAttribute='newLogin'>
                 <p>
                     <form:label path='email' class="form-label">Email: </form:label>
                     <form:input type="email" path='email' class="form-control"/>
-                    <form:errors path='email' class="text-danger"/>
                 </p>
                 <p>
                     <form:label path='password' class="form-label">Password: </form:label>
                     <form:input type="password" path='password' class="form-control"/>
-                    <form:errors path='password' class="text-danger"/>
-                </p>
-                <p>
-                    <form:label path='passwordConfirm' class="form-label">Confirm password: </form:label>
-                    <form:input type="password" path='passwordConfirm' class="form-control"/>
-                    <form:errors path='passwordConfirm' class="text-danger"/>
-                </p>
-                <br>
-                <p>
-                    <form:label class="form-label" path='zipCode'>ZipCode: </form:label>
-                    <form:input class="form-control" path='zipCode'/>
-                    <form:errors class="text-danger" path='zipCode'/>
                 </p>
                 <input class="btn btn-secondary form-control"type='submit' value='Sign Up'/>
+                <form:errors path='password' class="text-danger"/>
+                <form:errors path='email' class="text-danger"/>
                 </form:form>
             </div>
         </div>

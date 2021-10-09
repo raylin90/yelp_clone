@@ -1,7 +1,10 @@
 package com.spring.yelpclone.controllers;
 
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,9 +24,12 @@ public class RestaurantController {
 	
 	// base route for all the restaurant
 	@GetMapping("/")
-	public String homePage(Model model) {
+	public String homePage(Model model, HttpSession session) {
 		List<Restaurant> allRestaurants = this.restaurantService.findAllRestaurant();
 		model.addAttribute("allRestaurants", allRestaurants);
+		
+		Long loginUserId = (Long) session.getAttribute("user_id");
+		System.out.println(loginUserId);
 		return "index.jsp";
 	}
 	

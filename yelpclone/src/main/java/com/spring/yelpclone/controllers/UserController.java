@@ -38,15 +38,27 @@ public class UserController {
         return "redirect:/";
     }
     
-    @PostMapping("/login")
-    public String login(@Valid @ModelAttribute("newLogin") LoginUser newLogin, 
-            BindingResult result, Model model, HttpSession session, @ModelAttribute("newLogin") LoginUser loginUser) {
+	// login route (view page)
+    @GetMapping("/login")
+    public String login(@ModelAttribute("newLogin") LoginUser newLogin) {
+    		return "user/login.jsp";
+    }
+    
+    // post route to login
+    @PostMapping("/return/user")
+    public String login(@Valid @ModelAttribute("newLogin") LoginUser newLogin, BindingResult result, Model model, HttpSession session) {
     	// pass to validate more
     	User user = this.userService.login(newLogin, result);
         if(result.hasErrors()) {
-            return "index.jsp";
+    			return "user/login.jsp";
         }
         session.setAttribute("user_id", user.getId());
-        return "redirect:/home";
+        return "redirect:/";
+    }
+    
+    @GetMapping("/logout")
+    public String signOut(HttpSession session) {
+    		session.invalidate();
+    		return "redirect:/";
     }
 }
