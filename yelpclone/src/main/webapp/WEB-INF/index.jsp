@@ -42,7 +42,7 @@
                 <!-- navbar search and submit -->
                 <div>
                     <a class="btn btn-primary" href="">Login</a>
-                    <a class="btn btn-outline-success" href="">Sign Up</a>
+                    <a class="btn btn-outline-success" href="/register">Sign Up</a>
                 </div>
             </div>
         </div>

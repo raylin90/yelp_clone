@@ -33,7 +33,7 @@ public class User {
     @Email(message="Please enter a valid email!")
     private String email;
     
-    @NotEmpty(message="Password is required!")
+    @NotEmpty
     @Size(min=8, message="Password must be at least 8 characters long")
     private String password;
     

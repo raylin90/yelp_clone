@@ -19,21 +19,23 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 	
+	// register route (view page)
     @GetMapping("/register")
-    public String index(@ModelAttribute("newUser") User user, @ModelAttribute("newLogin") LoginUser loginser) {
-        return "index.jsp";
+    public String index(@ModelAttribute("newUser") User user) {
+    	
+        return "user/register.jsp";
     }
     
-    @PostMapping("/register2")
-    public String register(@Valid @ModelAttribute("newUser") User newUser, 
-            BindingResult result, Model model, HttpSession session, @ModelAttribute("newLogin") LoginUser loginuser) {
-    	// pass to validate more
+    // post route to save on database
+    @PostMapping("/signup")
+    public String register(@Valid @ModelAttribute("newUser") User newUser, BindingResult result, Model model, HttpSession session) {
+    		// pass for customized validation
         this.userService.register(newUser, result);
         if(result.hasErrors()) {
-            return "index.jsp";
+            return "user/register.jsp";
         }
         session.setAttribute("user_id", newUser.getId());
-        return "redirect:/home";
+        return "redirect:/";
     }
     
     @PostMapping("/login")

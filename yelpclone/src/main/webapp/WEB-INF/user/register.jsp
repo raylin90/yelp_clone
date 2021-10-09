@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix='form' uri='http://www.springframework.org/tags/form'%>
 
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${oneRestaurant.name}</title>
+<title>New User</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
 <link rel="short cut icon" type="image/png" href="/images/favicon.png">
@@ -47,18 +48,49 @@
         </div>
     </nav>
 
-    <div class="position-relative text-light">
-        <img src="/images/adv2.png" alt="main adv." class="rounded" style="height: 70vh; width:100vw; object-fit: cover;">
-        <form class="position-absolute" style="top: 43vh; left: 20vw">
-            <h1 class="fs-1 fw-bold">${oneRestaurant.name}</h1>
-            <h3>rating</h3>
-            <h3 class="fs-6">${oneRestaurant.category}</h3>
-        </form>
-    </div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-6 text-center">
+                <h3>Sign Up for Yum!</h3>
+                <p>Connect with great local restaurants</p>
 
-    <div class="container mt-4">
-        <a class="btn btn-primary" href="">Write a Review</a>
-        <a class="btn btn-info" href="/edit/restaurant/${oneRestaurant.id}">Edit</a>
+
+                <form:form action='/signup' method='post' modelAttribute='newUser'>
+                <p>
+                    <form:label path='firstName' class="form-label">First Name: </form:label>
+                    <form:input path='firstName' class="form-control"/>
+                    <form:errors path='firstName' class="text-danger"/>
+                </p>
+                <p>
+                    <form:label path='lastName' class="form-label">Last Name: </form:label>
+                    <form:input path='lastName' class="form-control"/>
+                    <form:errors path='lastName' class="text-danger"/>
+                </p>
+                <p>
+                    <form:label path='email' class="form-label">Email: </form:label>
+                    <form:input type="email" path='email' class="form-control"/>
+                    <form:errors path='email' class="text-danger"/>
+                </p>
+                <p>
+                    <form:label path='password' class="form-label">Password: </form:label>
+                    <form:input type="password" path='password' class="form-control"/>
+                    <form:errors path='password' class="text-danger"/>
+                </p>
+                <p>
+                    <form:label path='passwordConfirm' class="form-label">Confirm password: </form:label>
+                    <form:input type="password" path='passwordConfirm' class="form-control"/>
+                    <form:errors path='passwordConfirm' class="text-danger"/>
+                </p>
+                <br>
+                <p>
+                    <form:label class="form-label" path='zipCode'>ZipCode: </form:label>
+                    <form:input class="form-control" path='zipCode'/>
+                    <form:errors class="text-danger" path='zipCode'/>
+                </p>
+                <input class="btn btn-secondary form-control"type='submit' value='Sign Up'/>
+                </form:form>
+            </div>
+        </div>
     </div>
 </body>
 </html>
