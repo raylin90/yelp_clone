@@ -52,4 +52,23 @@ public class RestaurantController {
 		model.addAttribute("oneRestaurant", oneRestaurant);
 		return "restaurant/view.jsp";
 	}
+	
+	// edit a restaurant (view page)
+	@GetMapping("/edit/restaurant/{id}")
+	public String editOneRestaurant(@PathVariable("id") Long id, Model model) {
+		Restaurant oneRestaurant = this.restaurantService.findOneRestaurant(id);
+		model.addAttribute("oneRestaurant", oneRestaurant);
+		return "restaurant/edit.jsp";
+	}
+	
+	// update a restaurant (post route)
+	@PostMapping("/update/restaurant/{id}")
+	public String updateOneRestaurant(@PathVariable("id") Long id, @Valid @ModelAttribute("oneRestaurant") Restaurant restaurant, BindingResult result) {
+        if (result.hasErrors()) {
+            return "restaurant/edit.jsp";
+        } else {
+        	this.restaurantService.saveRestaurant(restaurant);
+    			return "redirect:/view/restaurant/" + id;
+        }
+	}
 }

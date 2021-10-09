@@ -58,7 +58,7 @@
 
     <div class="container mt-4">
         <a class="btn btn-primary" href="">Write a Review</a>
-        <a class="btn btn-info" href="">Edit</a>
+        <a class="btn btn-info" href="/edit/restaurant/${oneRestaurant.id}">Edit</a>
     </div>
 </body>
 </html>

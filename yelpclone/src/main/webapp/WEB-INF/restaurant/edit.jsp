@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Create a New Restaurant</title>
+<title>Edit - ${oneRestaurant.name}</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
 <link rel="short cut icon" type="image/png" href="/images/favicon.png">
@@ -52,7 +52,7 @@
         <div class="row">
             <div class="col-6">
                 <h3>Create a New Restaurant</h3>
-                <form:form action='/add/restaurant' method='post' modelAttribute='restaurant'>
+                <form:form action='/update/restaurant/${oneRestaurant.id}' method='post' modelAttribute='oneRestaurant'>
                 <p>
                     <form:label class="form-label" path='name'>Restaurant Name: </form:label>
                     <form:input class="form-control" path='name'/>
@@ -77,7 +77,7 @@
                     <p>
                         <form:label class="form-label" path='state'>State: </form:label>
                         <form:select class="form-control" path='state'>
-                            <option value=""></option>
+                            <option value="${oneRestaurant.state}">${oneRestaurant.state}</option>
                             <option value="AL">AL</option>
                             <option value="AK">AK</option>
                             <option value="AR">AR</option>	
@@ -141,7 +141,7 @@
                 <p>
                     <form:label class="form-label" path='category'>Category: </form:label>
                     <form:select class="form-control" path='category'>
-                        <option value=""></option>
+                        <option value="${oneRestaurant.category}">${oneRestaurant.category}</option>
                         <option value="Fine Dining">Fine Dining</option>
                         <option value="Casual Dining">Casual Dining</option>
                         <option value="Family Style">Family Style</option>
