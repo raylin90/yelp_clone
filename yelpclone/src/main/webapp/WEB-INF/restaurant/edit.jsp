@@ -41,9 +41,17 @@
                 </ul>
                 <!-- navbar search and submit -->
                 <div>
-                    <a class="btn btn-primary" href="/login">Login</a>
-                    <a class="btn btn-outline-success me-3" href="/register">Sign Up</a>
-                    <a class="btn btn-danger" href="/logout">Logout</a>
+                    <!-- display login/register/logout button base on whether user login or not -->
+                    <c:set var = "isUserLogin" value = "${isUserLogin}"/>
+                    <c:choose>
+                    <c:when test="${isUserLogin == true}">
+                        <a class="btn btn-danger" href="/logout">Logout</a>
+                    </c:when>
+                    <c:otherwise>
+                        <a class="btn btn-primary" href="/login">Login</a>
+                        <a class="btn btn-outline-success" href="/register">Sign Up</a>
+                    </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
         </div>

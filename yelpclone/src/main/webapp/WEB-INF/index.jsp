@@ -41,9 +41,17 @@
                 </ul>
                 <!-- navbar search and submit -->
                 <div>
-                    <a class="btn btn-primary" href="/login">Login</a>
-                    <a class="btn btn-outline-success" href="/register">Sign Up</a>
-                    <a class="btn btn-danger" href="/logout">Logout</a>
+                    <!-- display login/register/logout button base on whether user login or not -->
+                    <c:set var = "isUserLogin" value = "${isUserLogin}"/>
+                    <c:choose>
+                    <c:when test="${isUserLogin == true}">
+                        <a class="btn btn-danger" href="/logout">Logout</a>
+                    </c:when>
+                    <c:otherwise>
+                        <a class="btn btn-primary" href="/login">Login</a>
+                        <a class="btn btn-outline-success" href="/register">Sign Up</a>
+                    </c:otherwise>
+                    </c:choose>
                 </div>
             </div>
         </div>
@@ -51,7 +59,7 @@
 
     <!-- advertise pivture and search bar -->
     <div class="text-center position-relative">
-        <img src="../images/adv2.png" alt="main adv." class="img-fluid rounded">
+        <img src="/images/adv2.png" alt="main adv." class="img-fluid rounded">
         <form class="d-flex position-absolute bottom-50 end-50">
             <input class="form-control me-2" type="search" placeholder="Search Restaurant" aria-label="Search" style="width: 30vw; max-width: 700px;">
             <button class="btn btn-outline-info" type="submit">Search</button>

@@ -28,8 +28,17 @@ public class RestaurantController {
 		List<Restaurant> allRestaurants = this.restaurantService.findAllRestaurant();
 		model.addAttribute("allRestaurants", allRestaurants);
 		
+		// check if there's any user login, if yes, set the session, otherwise return null; ( we use it to display front-end button)
 		Long loginUserId = (Long) session.getAttribute("user_id");
-		System.out.println(loginUserId);
+		Boolean isUserLogin = false;
+		if(loginUserId != null) {
+			isUserLogin = true;
+		} else {
+			isUserLogin = false;
+		}
+		// System.out.println(isUserLogin);
+		// System.out.println(loginUserId);
+		model.addAttribute("isUserLogin", isUserLogin);
 		return "index.jsp";
 	}
 	
