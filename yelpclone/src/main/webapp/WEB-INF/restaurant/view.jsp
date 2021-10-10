@@ -84,7 +84,7 @@
                 <!-- Google Map API -->
                 <div id="map">Google Map</div>
                 <!-- <script async
-                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBsJYJKveqdGf8ZIRe39VqOz1ax3scXasY&callback=initMap">
+                    src="https://maps.googleapis.com/maps/api/js?key={GOOGLE API KEY}&callback=initMap">
                 </script> -->
                 <h5 class="m-0">${oneRestaurant.name}</h5>
                 <p class="m-0">${oneRestaurant.address1} ${oneRestaurant.address2}</p>
@@ -105,7 +105,7 @@
             axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
                 params: {
                     address: address,
-                    key: "AIzaSyBsJYJKveqdGf8ZIRe39VqOz1ax3scXasY",
+                    key: "{GOOGLE API KEY}",
                 }
             })
             .then(function(response) {
