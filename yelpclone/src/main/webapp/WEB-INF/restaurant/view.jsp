@@ -10,14 +10,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
 <link rel="short cut icon" type="image/png" href="/images/favicon.png">
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
-<style>
-    #map {
-        height: 300px;
-        width: 300px;
-    }
-
-    </style>
 </head>
 
 <body>
@@ -79,10 +71,13 @@
         <a class="btn btn-info" href="/edit/restaurant/${oneRestaurant.id}">Edit</a>
 
         <div class="row">
-            <div class="col-9"></div>
+            <div class="col-6"></div>
+            <div id="weather" class="col-3">
+                Weather
+            </div>
             <div class="col-3 float-right">
                 <!-- Google Map API -->
-                <div id="map">Google Map</div>
+                <div id="map" style="height: 300px; width: 300px;">Google Map</div>
                 <!-- <script async
                     src="https://maps.googleapis.com/maps/api/js?key={GOOGLE API KEY}&callback=initMap">
                 </script> -->
@@ -90,11 +85,44 @@
                 <p class="m-0">${oneRestaurant.address1} ${oneRestaurant.address2}</p>
                 <p>${oneRestaurant.city}, ${oneRestaurant.state}, ${oneRestaurant.zipCode}</p>
                 <p hidden id="address">${oneRestaurant.address1} ${oneRestaurant.address2} ${oneRestaurant.city}, ${oneRestaurant.state}, ${oneRestaurant.zipCode}</p>
+                <p hidden id="city">${oneRestaurant.city}</p>
             </div>
         </div>
     </div>
+    <script>
+        getCurrentWeather();
 
+        function getCurrentWeather() {
+            const city = document.getElementById("city").innerText;
+            console.log(city)
+            axios.get(`https://api.openweathermap.org/data/2.5/weather?q=college,point&appid={WEATHER API KEY}`)
+            .then(function(response) {
+                var temp = convertTemperture(response.data.main.temp).toFixed(2);
+                var minTemp = convertTemperture(response.data.main.temp_min).toFixed(2);
+                var maxTemp = convertTemperture(response.data.main.temp_max).toFixed(2);
+                var weather = response.data.weather[0].main;
+                var weatherIcon = response.data.weather[0].icon;
+                console.log(temp);
+                const weatherOutput = `
+                    <p>Current Weather: \${weather}</p>
+                    <p>Temperture: \${temp}</p>
+                    <p>Min. Temp.: \${minTemp}</p>
+                    <p>Max. Temp.: \${maxTemp}</p>
+                    <img src=\${weatherIcon} alt="weather icon">
+                `;
+                document.getElementById("weather").innerHTML = weatherOutput;
+            })
+            .catch(function(error) {
+                console.log(error);
+            })
+        }
 
+        function convertTemperture(kelvin) {
+            const fahrenheit = (kelvin - 273.15) * 9/5 + 32;
+            return fahrenheit;
+        }
+
+    </script>
     <!-- <script>
         getGeoCode()
         // function convert the address into geocode
