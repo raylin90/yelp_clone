@@ -1,11 +1,15 @@
 package com.spring.yelpclone.models;
 
 import java.util.Date;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -45,6 +49,9 @@ public class Restaurant {
 	private String phone;
 	
 	private String webAddress;
+	
+    @OneToMany(mappedBy="restaurant", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
+    private List<Menu> menus;
 	
     // This will not allow the createdAt column to be updated after creation
     @Column(updatable=false)
@@ -123,6 +130,12 @@ public class Restaurant {
 	}
 	public void setWebAddress(String webAddress) {
 		this.webAddress = webAddress;
+	}
+	public List<Menu> getMenus() {
+		return menus;
+	}
+	public void setMenus(List<Menu> menus) {
+		this.menus = menus;
 	}
 	public Date getCreatedAt() {
 		return createdAt;

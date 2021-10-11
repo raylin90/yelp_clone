@@ -71,7 +71,12 @@
         <a class="btn btn-info" href="/edit/restaurant/${oneRestaurant.id}">Edit</a>
 
         <div class="row">
-            <div class="col-6"></div>
+            <div class="col-6">
+                ${oneRestaurant.webAddress}
+                ${oneRestaurant.phone}
+                <h4>Menu</h4>
+                <a class="btn btn-outline-success" href="#">Full Menu</a>
+            </div>
             <div id="weather" class="col-3 text-center">
                 Weather
             </div>
@@ -97,7 +102,7 @@
             axios.get(`https://api.openweathermap.org/data/2.5/weather?`, {
                 params: {
                     "zip" : zipCode,
-                    "appid": "2b04279bdb925dadd93e1d10246bbfaa",
+                    "appid": "{WEATHER API KEY}",
                 }
             })
             .then(function(response) {
