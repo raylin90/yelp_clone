@@ -72,7 +72,7 @@
 
         <div class="row">
             <div class="col-6"></div>
-            <div id="weather" class="col-3">
+            <div id="weather" class="col-3 text-center">
                 Weather
             </div>
             <div class="col-3 float-right">
@@ -81,34 +81,39 @@
                 <!-- <script async
                     src="https://maps.googleapis.com/maps/api/js?key={GOOGLE API KEY}&callback=initMap">
                 </script> -->
-                <h5 class="m-0">${oneRestaurant.name}</h5>
                 <p class="m-0">${oneRestaurant.address1} ${oneRestaurant.address2}</p>
                 <p>${oneRestaurant.city}, ${oneRestaurant.state}, ${oneRestaurant.zipCode}</p>
                 <p hidden id="address">${oneRestaurant.address1} ${oneRestaurant.address2} ${oneRestaurant.city}, ${oneRestaurant.state}, ${oneRestaurant.zipCode}</p>
-                <p hidden id="city">${oneRestaurant.city}</p>
+                <p hidden id="zip">${oneRestaurant.zipCode},US</p>
             </div>
         </div>
     </div>
     <script>
+        // make open weather API call
         getCurrentWeather();
-
         function getCurrentWeather() {
-            const city = document.getElementById("city").innerText;
-            console.log(city)
-            axios.get(`https://api.openweathermap.org/data/2.5/weather?q=college,point&appid={WEATHER API KEY}`)
+            const zipCode = document.getElementById("zip").innerText;
+            // console.log(zipCode);
+            axios.get(`https://api.openweathermap.org/data/2.5/weather?`, {
+                params: {
+                    "zip" : zipCode,
+                    "appid": "2b04279bdb925dadd93e1d10246bbfaa",
+                }
+            })
             .then(function(response) {
+                console.log(response.data)
                 var temp = convertTemperture(response.data.main.temp).toFixed(2);
                 var minTemp = convertTemperture(response.data.main.temp_min).toFixed(2);
                 var maxTemp = convertTemperture(response.data.main.temp_max).toFixed(2);
                 var weather = response.data.weather[0].main;
                 var weatherIcon = response.data.weather[0].icon;
-                console.log(temp);
                 const weatherOutput = `
-                    <p>Current Weather: \${weather}</p>
-                    <p>Temperture: \${temp}</p>
-                    <p>Min. Temp.: \${minTemp}</p>
-                    <p>Max. Temp.: \${maxTemp}</p>
-                    <img src=\${weatherIcon} alt="weather icon">
+                    <img src=/images/\${weatherIcon}.png alt="weather icon">
+                    <h4>\${weather}</h4>
+                    <p>Temperture: \${temp}&#8457;</p>
+                    <p>Min. Temp.: \${minTemp}&#8457;</p>
+                    <p>Max. Temp.: \${maxTemp}&#8457;</p>
+
                 `;
                 document.getElementById("weather").innerHTML = weatherOutput;
             })

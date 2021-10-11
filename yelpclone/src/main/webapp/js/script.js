@@ -1,1 +1,2 @@
-console.log("IM HERE");
+const city = "kansis city"
+const chars = city.split(" ").join(",")
