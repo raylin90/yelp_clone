@@ -25,13 +25,11 @@ public class Menu {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
-	@NotEmpty(message = "Menu title is required")
 	private String title;
 	
-    @Size(min=5, message = "Description must be at least 5 characters long")
 	private String description;
     
-    private Double price;
+    private String price;
     
     private String image_url;
     
@@ -54,6 +52,26 @@ public class Menu {
 	protected void onUpdate(){
 	    this.updatedAt = new Date();
 	}
+	
+	// constructor
+	public Menu(String title, String description, String price, String image_url, Restaurant restaurant) {
+		super();
+		this.title = title;
+		this.description = description;
+		this.price = price;
+		this.image_url = image_url;
+		this.restaurant = restaurant;
+	}
+	
+	public Menu(String title, String description, String price, Restaurant restaurant) {
+		super();
+		this.title = title;
+		this.description = description;
+		this.price = price;
+		this.restaurant = restaurant;
+	}
+	
+	// getter and setter
 	public Long getId() {
 		return id;
 	}
@@ -72,10 +90,10 @@ public class Menu {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Double getPrice() {
+	public String getPrice() {
 		return price;
 	}
-	public void setPrice(Double price) {
+	public void setPrice(String price) {
 		this.price = price;
 	}
 	public String getImage_url() {
@@ -101,6 +119,12 @@ public class Menu {
 	}
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+	public Restaurant getRestaurant() {
+		return restaurant;
+	}
+	public void setRestaurant(Restaurant restaurant) {
+		this.restaurant = restaurant;
 	}
 
 }

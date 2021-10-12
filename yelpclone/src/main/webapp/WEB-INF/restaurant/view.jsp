@@ -67,15 +67,18 @@
     </div>
 
     <div class="container mt-4">
-        <a class="btn btn-primary" href="">Write a Review</a>
+        <a class="btn btn-primary" href="#">Write a Review</a>
         <a class="btn btn-info" href="/edit/restaurant/${oneRestaurant.id}">Edit</a>
 
         <div class="row">
             <div class="col-6">
-                ${oneRestaurant.webAddress}
-                ${oneRestaurant.phone}
+                <hr>
                 <h4>Menu</h4>
-                <a class="btn btn-outline-success" href="#">Full Menu</a>
+                <a class="btn btn-outline-success mt-3" href="/view/restaurant/${oneRestaurant.id}/menus">Full Menu</a>
+                <a class="d-block mt-2" href=${oneRestaurant.webAddress}>${oneRestaurant.webAddress}</a>
+                <h5 class="mt-2">${oneRestaurant.phone}</h5>
+                <p class="text-secondary">${oneRestaurant.address1} ${oneRestaurant.address2} ${oneRestaurant.city}, ${oneRestaurant.state}, ${oneRestaurant.zipCode}</p>
+                <hr>
             </div>
             <div id="weather" class="col-3 text-center">
                 Weather
@@ -86,8 +89,6 @@
                 <!-- <script async
                     src="https://maps.googleapis.com/maps/api/js?key={GOOGLE API KEY}&callback=initMap">
                 </script> -->
-                <p class="m-0">${oneRestaurant.address1} ${oneRestaurant.address2}</p>
-                <p>${oneRestaurant.city}, ${oneRestaurant.state}, ${oneRestaurant.zipCode}</p>
                 <p hidden id="address">${oneRestaurant.address1} ${oneRestaurant.address2} ${oneRestaurant.city}, ${oneRestaurant.state}, ${oneRestaurant.zipCode}</p>
                 <p hidden id="zip">${oneRestaurant.zipCode},US</p>
             </div>

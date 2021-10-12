@@ -22,7 +22,6 @@ public class UserController {
 	// register route (view page)
     @GetMapping("/register")
     public String index(@ModelAttribute("newUser") User user) {
-    	
         return "user/register.jsp";
     }
     
