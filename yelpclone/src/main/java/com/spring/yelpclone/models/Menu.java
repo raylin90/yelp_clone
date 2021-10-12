@@ -1,7 +1,6 @@
 package com.spring.yelpclone.models;
 
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,8 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -54,6 +51,9 @@ public class Menu {
 	}
 	
 	// constructor
+	public Menu() {
+		
+	}
 	public Menu(String title, String description, String price, String image_url, Restaurant restaurant) {
 		super();
 		this.title = title;
@@ -62,7 +62,6 @@ public class Menu {
 		this.image_url = image_url;
 		this.restaurant = restaurant;
 	}
-	
 	public Menu(String title, String description, String price, Restaurant restaurant) {
 		super();
 		this.title = title;

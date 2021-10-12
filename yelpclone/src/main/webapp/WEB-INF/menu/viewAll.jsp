@@ -60,7 +60,22 @@
 
     <div class="container mt-5">
         <div class="row">
-            <div class="col-8"></div>
+            <div class="col-8">
+                <h3>Menu for ${oneRestaurant.name}</h3>
+                <c:forEach items='${oneRestaurant.menus}' var='menu'>
+                    <hr>
+                    <div class="one-menu d-flex justify-content-between">
+                        <div class="left d-flex">
+                            <img class="rounded me-2" style="width: 80px;" src=${menu.image_url} alt=${menu.title}>
+                            <div class="content">
+                                <h6 class="text-decoration-underline">${menu.title}</h6>
+                                <p>${menu.description}</p>
+                            </div>
+                        </div>
+                        <h6 class="float-end me-2">$${menu.price}</h6>
+                    </div>
+                </c:forEach>
+            </div>
             <div class="col-4">
                 <a href="/create/menu/restaurant/${oneRestaurant.id}">Want to Create a Menu?</a>
                 <div class="info border rounded p-3 mt-2">

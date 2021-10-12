@@ -26,7 +26,7 @@ public class MenuController {
 	
 	@Autowired
 	private RestaurantService restaurantService;
-	// to store the img that user upload
+	// to store the image that user upload
 	private String uploaded_folder="src/main/webapp/images/";
 	
 	// page to view all menus for particular restaurant
@@ -41,7 +41,7 @@ public class MenuController {
 			isUserLogin = false;
 		}
 		model2.addAttribute("isUserLogin", isUserLogin);
-		System.out.println(isUserLogin);
+		// System.out.println(isUserLogin);
 		
 		Restaurant oneRestaurant = this.restaurantService.findOneRestaurant(id);
 		model.addAttribute("oneRestaurant", oneRestaurant);
@@ -80,7 +80,7 @@ public class MenuController {
 				// this is going to actually make a record in our DB about the location of the uploaded file
 				String url = "/images/" + file.getOriginalFilename();
 				// save the information into database
-				this.menuService.saveMenu(oneRestaurant, title, description, price, url);
+				this.menuService.saveMenu(oneRestaurant, title.toUpperCase(), description, price, url);
 			} catch(IOException e) {
 				// if running into error, print the error
 				e.printStackTrace();
@@ -89,7 +89,8 @@ public class MenuController {
 		}
 		// if user didn't upload a file
 		if(file.isEmpty()) {
-			this.menuService.saveMenu(oneRestaurant, title, description, price);
+			String url = "/images/default.png";
+			this.menuService.saveMenu(oneRestaurant, title.toUpperCase(), description, price, url);
 		}
 		
 		return "redirect:/view/restaurant/" + id + "/menus";

@@ -70,6 +70,11 @@ public class Restaurant {
 	    this.updatedAt = new Date();
 	}
 	
+	// constructor
+	public Restaurant () {
+		
+	}
+	
 	// getter and setter
 	public long getId() {
 		return id;
