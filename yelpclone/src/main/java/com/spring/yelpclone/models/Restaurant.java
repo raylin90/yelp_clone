@@ -9,6 +9,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
@@ -52,6 +55,14 @@ public class Restaurant {
 	
     @OneToMany(mappedBy="restaurant", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private List<Menu> menus;
+    
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+    		name = "reviews",
+    		joinColumns = @JoinColumn(name = "restaurant_id"),
+    		inverseJoinColumns = @JoinColumn(name = "user_id")
+    		)
+    private List<Review> reviews;
 	
     // This will not allow the createdAt column to be updated after creation
     @Column(updatable=false)
@@ -153,6 +164,12 @@ public class Restaurant {
 	}
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+	public List<Review> getReviews() {
+		return reviews;
+	}
+	public void setReviews(List<Review> reviews) {
+		this.reviews = reviews;
 	}
 
 }

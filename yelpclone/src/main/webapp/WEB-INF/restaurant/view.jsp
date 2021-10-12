@@ -67,7 +67,7 @@
     </div>
 
     <div class="container mt-4">
-        <a class="btn btn-primary" href="#">Write a Review</a>
+        <a class="btn btn-primary" href="/create/review/restaurant/${oneRestaurant.id}">Write a Review</a>
         <a class="btn btn-info" href="/edit/restaurant/${oneRestaurant.id}">Edit</a>
 
         <div class="row">
@@ -80,12 +80,10 @@
                 <p class="text-secondary">${oneRestaurant.address1} ${oneRestaurant.address2} ${oneRestaurant.city}, ${oneRestaurant.state}, ${oneRestaurant.zipCode}</p>
                 <hr>
             </div>
-            <div id="weather" class="col-3 text-center">
-                Weather
-            </div>
+            <div id="weather" class="col-3 text-center"></div>
             <div class="col-3 float-right">
                 <!-- Google Map API -->
-                <div id="map" style="height: 300px; width: 300px;">Google Map</div>
+                <div id="map" style="height: 300px; width: 300px;"></div>
                 <!-- <script async
                     src="https://maps.googleapis.com/maps/api/js?key={GOOGLE API KEY}&callback=initMap">
                 </script> -->
