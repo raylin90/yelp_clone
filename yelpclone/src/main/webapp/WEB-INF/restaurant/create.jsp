@@ -172,7 +172,7 @@
                     <form:input type="url" class="form-control" path='webAddress' placeholder="http://www.companyaddress.com"/>
                     <form:errors class="text-danger" path='webAddress'/>
                 </p>
-                <input class="btn btn-secondary"type='submit' value='Submit'/>
+                <input class="btn btn-secondary" type='submit' value='Submit'/>
                 </form:form>
             </div>
         </div>
