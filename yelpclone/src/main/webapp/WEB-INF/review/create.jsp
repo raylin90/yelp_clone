@@ -11,6 +11,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
 <link rel="short cut icon" type="image/png" href="/images/favicon.png">
+<link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
@@ -94,24 +95,33 @@
                     </div>
                 </div>
 
-                <form:form action='#' method='post' modelAttribute='review'>
-                <p>
-                <form:label class="form-label" path='rating'>Rating</form:label>
-                <form:input class="form-control" path='rating'/>
-                <form:errors class="text-danger" path='rating'/>
-                </p>
-                <p>
-                <form:label class="form-label" path='comment'>Comment</form:label>
-                <form:textarea class="form-control" path='comment' cols="30" rows="10"></form:textarea>
-                <form:errors class="text-danger" path='comment'/>
-                </p>
-                <p>
-                <form:label class="form-label" path='pic_url'>Attach Photo</form:label>
-                <form:input type="file" class="form-control" path='pic_url'/>
-                <form:errors class="text-danger" path='pic_url'/>
-                </p>
-                <input class="btn btn-secondary" type='submit' value='Submit'/>
-                </form:form>
+                <form action="#" method="post" enctype='multipart/form-data'>
+                    <p>
+                        <label class="form-label" for='rating'>Rating</label>
+                        <input class="form-control" name='rating'/>
+                    </p>
+                    <p class="rate">
+                        <input type="radio" id="star5" name="rating" value="5" />
+                        <label for="star5" title="text">5 stars</label>
+                        <input type="radio" id="star4" name="rating" value="4" />
+                        <label for="star4" title="text">4 stars</label>
+                        <input type="radio" id="star3" name="rating" value="3" />
+                        <label for="star3" title="text">3 stars</label>
+                        <input type="radio" id="star2" name="rating" value="2" />
+                        <label for="star2" title="text">2 stars</label>
+                        <input type="radio" id="star1" name="rating" value="1" />
+                        <label for="star1" title="text">1 star</label>
+                    </p>
+                    <p>
+                        <label class="form-label" for='comment'>Comment</label>
+                        <textarea class="form-control" name='comment' cols="30" rows="10"></textarea>
+                    </p>
+                    <p>
+                        <label class="form-label" for='pic_url'>Attach Photo</label>
+                        <input type="file" class="form-control" name='pic_url'/>
+                    </p>
+                    <input class="btn btn-secondary" type='submit' value='Submit'/>
+                </form>
             </div>
         </div>
     </div>
