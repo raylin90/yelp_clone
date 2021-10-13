@@ -66,7 +66,7 @@ public class MenuController {
 			Double.parseDouble(price);
 		} catch (NumberFormatException e) {
 			redirectAttributes.addFlashAttribute("message", "please enter a valid number");
-			return "redirect:/create/menu//restaurant/" + id;
+			return "redirect:/create/menu/restaurant/" + id;
 		}
 		// if user uploaded a file
 		if(!file.isEmpty()) {

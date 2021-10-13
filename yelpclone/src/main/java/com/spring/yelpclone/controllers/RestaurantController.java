@@ -49,6 +49,7 @@ public class RestaurantController {
 	// POST route to add the new restaurant to database
 	@PostMapping("/add/restaurant")
 	public String addNewRest(@Valid @ModelAttribute("restaurant") Restaurant restaurant, BindingResult result) {
+		System.out.println(restaurant);
         if (result.hasErrors()) {
             return "restaurant/create.jsp";
         } else {

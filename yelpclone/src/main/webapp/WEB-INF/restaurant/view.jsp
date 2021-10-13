@@ -84,9 +84,9 @@
             <div class="col-3 float-right">
                 <!-- Google Map API -->
                 <div id="map" style="height: 300px; width: 300px;"></div>
-                <!-- <script async
-                    src="https://maps.googleapis.com/maps/api/js?key={GOOGLE API KEY}&callback=initMap">
-                </script> -->
+                <script async
+                    src="https://maps.googleapis.com/maps/api/js?callback=initMap">
+                </script>
                 <p hidden id="address">${oneRestaurant.address1} ${oneRestaurant.address2} ${oneRestaurant.city}, ${oneRestaurant.state}, ${oneRestaurant.zipCode}</p>
                 <p hidden id="zip">${oneRestaurant.zipCode},US</p>
             </div>
@@ -132,7 +132,7 @@
         }
 
     </script>
-    <!-- <script>
+    <script>
         getGeoCode()
         // function convert the address into geocode
         function getGeoCode() {
@@ -142,7 +142,7 @@
             axios.get("https://maps.googleapis.com/maps/api/geocode/json", {
                 params: {
                     address: address,
-                    key: "{GOOGLE API KEY}",
+                    key: "AIzaSyBsJYJKveqdGf8ZIRe39VqOz1ax3scXasY",
                 }
             })
             .then(function(response) {
@@ -188,6 +188,6 @@
                 mapDetailWindow.open(map, marker);
             });
         };
-    </script> -->
+    </script>
 </body>
 </html>

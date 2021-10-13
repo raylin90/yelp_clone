@@ -12,8 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -25,10 +23,8 @@ public class Review {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
-	@NotEmpty(message = "Rating is reqired")
-	private Double rating;
+	private String rating;
 	
-    @Size(min=5, max=255, message = "Comment should be at least 5 characters long, max at 255 characters")
 	private String comment;
     
 	private String pic_url;
@@ -62,6 +58,17 @@ public class Review {
 		
 	}
 	
+	public Review(String rating, String comment) {
+		this.rating = rating;
+		this.comment = comment;
+	}
+	
+	public Review(String rating, String comment, String pic_url) {
+		this.rating = rating;
+		this.comment = comment;
+		this.pic_url = pic_url;
+	}
+	
 	// getter and setter
 	public long getId() {
 		return id;
@@ -69,10 +76,10 @@ public class Review {
 	public void setId(long id) {
 		this.id = id;
 	}
-	public Double getRating() {
+	public String getRating() {
 		return rating;
 	}
-	public void setRating(Double rating) {
+	public void setRating(String rating) {
 		this.rating = rating;
 	}
 	public String getComment() {

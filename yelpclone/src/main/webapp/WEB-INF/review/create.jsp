@@ -68,6 +68,7 @@
                     <!-- a tag trigger modal -->
                     <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="text-decoration-none text-success" href="#">Read review guidelines</a>
                 </div>
+                <br>
             
                 <!-- Modal -->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -95,13 +96,9 @@
                     </div>
                 </div>
 
-                <form action="#" method="post" enctype='multipart/form-data'>
-                    <p>
-                        <label class="form-label" for='rating'>Rating</label>
-                        <input class="form-control" name='rating'/>
-                    </p>
+                <form action="/save/review/restaurant/${oneRestaurant.id}" method="post" enctype='multipart/form-data'>
                     <p class="rate">
-                        <input type="radio" id="star5" name="rating" value="5" />
+                        <input type="radio" id="star5" name="rating" value="5"/>
                         <label for="star5" title="text">5 stars</label>
                         <input type="radio" id="star4" name="rating" value="4" />
                         <label for="star4" title="text">4 stars</label>
@@ -113,9 +110,10 @@
                         <label for="star1" title="text">1 star</label>
                     </p>
                     <p>
-                        <label class="form-label" for='comment'>Comment</label>
-                        <textarea class="form-control" name='comment' cols="30" rows="10"></textarea>
+                        <label class="form-label" for='comment'></label>
+                        <textarea class="form-control" name='comment' cols="30" rows="10" placeholder="Leave your comment here..."></textarea>
                     </p>
+                    <div class="text-danger">${message}</div>
                     <p>
                         <label class="form-label" for='pic_url'>Attach Photo</label>
                         <input type="file" class="form-control" name='pic_url'/>
@@ -125,6 +123,6 @@
             </div>
         </div>
     </div>
-
+    <script src="/js/script.js"></script>
 </body>
 </html>

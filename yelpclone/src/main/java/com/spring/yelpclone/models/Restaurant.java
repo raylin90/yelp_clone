@@ -171,5 +171,12 @@ public class Restaurant {
 	public void setReviews(List<Review> reviews) {
 		this.reviews = reviews;
 	}
+	@Override
+	public String toString() {
+		return "Restaurant [id=" + id + ", name=" + name + ", address1=" + address1 + ", address2=" + address2
+				+ ", city=" + city + ", state=" + state + ", zipCode=" + zipCode + ", category=" + category + ", phone="
+				+ phone + ", webAddress=" + webAddress + ", menus=" + menus + ", reviews=" + reviews + ", createdAt="
+				+ createdAt + ", updatedAt=" + updatedAt + "]";
+	}
 
 }

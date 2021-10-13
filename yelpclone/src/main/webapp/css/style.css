@@ -9,13 +9,16 @@
     padding: 0 10px;
 }
 
+/* select every radio that is not checked */
 .rate:not(:checked) > input {
     position:absolute;
+    /* move radio all the way to top (hide it) */
     top:-9999px;
 }
 
 .rate:not(:checked) > label {
     float:right;
+    /* position the radios next to each other */
     width:1em;
     overflow:hidden;
     white-space:nowrap;
@@ -24,10 +27,12 @@
     color:#ccc;
 }
 
+/* insert star before each label */
 .rate:not(:checked) > label:before {
     content: '★ ';
 }
 
+/* color change after checked/hover/unchecked */
 .rate > input:checked ~ label {
     color: #ffc700;    
 }
