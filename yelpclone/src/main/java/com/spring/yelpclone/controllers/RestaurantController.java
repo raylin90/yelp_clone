@@ -69,7 +69,6 @@ public class RestaurantController {
 		Restaurant oneRestaurant = this.restaurantService.findOneRestaurant(id);
 		model.addAttribute("oneRestaurant", oneRestaurant);
 		List<Review> reviews = this.reviewService.findAllReviewsByRestaurant(id);
-		System.out.println(reviews);
 		model.addAttribute("reviews", reviews);
 		return "restaurant/view.jsp";
 	}

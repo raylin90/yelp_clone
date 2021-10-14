@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix = "fn" uri = "http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html>
@@ -122,18 +124,35 @@
 
         <div class="row">
             <div class="col-6">
-                <h4 >Recommended Reviews</h4>
+                <h4 class="mb-3">Recommended Reviews</h4>
+                <!-- for loop the review list -->
                 <c:forEach items='${reviews}' var='review'>
-                    <h6>${review.user.firstName} ${review.user.lastName}</h6>
-                    <h6><c:out value='${review.rating}'/></h6>
-                    <div class="ratings">
-                        <div class="empty-stars"></div>
-                        <div class="full-stars" style="--percentage: <c:out value='${review.rating}'/>;"></div>
+
+                    <div class="d-flex">
+                        <img class="me-2" style="width: 50px; height: 50px;" src="/images/avatar.png" alt="avatar">
+                    
+                        <div class="personal-info d-flex flex-column justify-content-center">
+                            <h6 class="m-0">${review.user.firstName} ${review.user.lastName}</h6>
+                            <p class="m-0 text-secondary" style="font-size: small;"><fmt:formatDate value="${review.createdAt}" pattern="yyyy-MM-dd"/></p>
+                        </div>
                     </div>
-                    <p>${review.comment}</p>
+
+                    <div class="review-detail p-2">
+                        <div class="ratings">
+                            <div class="empty-stars"></div>
+                            <div class="full-stars" style="--percentage: <c:out value='${review.rating}'/>;"></div>
+                        </div>
+                        <p class="m-0">${review.comment}</p>
+                        <br>
+                        <!-- only display the img if we have one -->
+                        <c:set var = "pic_length" value = "${fn:length(review.pic_url)}"/>
+                        <c:if test = "${pic_length > 1}">
+                            <img class="rounded" style="width: 230px;" src="${review.pic_url}" alt="uploaded_img">
+                        </c:if>
+                    </div>
 
                 </c:forEach>
-                
+
             </div>
         </div>
     </div>

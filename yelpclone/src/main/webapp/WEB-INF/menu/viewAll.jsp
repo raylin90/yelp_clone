@@ -66,7 +66,7 @@
                     <hr>
                     <div class="one-menu d-flex justify-content-between">
                         <div class="left d-flex">
-                            <img class="rounded me-2" style="width: 80px;" src=${menu.image_url} alt=${menu.title}>
+                            <img class="rounded me-2" style="width: 80px;" src="${menu.image_url}" alt=${menu.title}>
                             <div class="content">
                                 <h6 class="text-decoration-underline">${menu.title}</h6>
                                 <p>${menu.description}</p>
