@@ -37,4 +37,8 @@ public class RestaurantService {
 		System.out.println(totalRating);
 		return this.restaurantRepo.save(r);
 	}
+
+	public List<Restaurant> findAllRestaurantByType(String type) {
+		return this.restaurantRepo.findByCategory(type);
+	}
 }

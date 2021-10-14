@@ -34,12 +34,12 @@
 
 /* color change after checked/hover/unchecked */
 .rate > input:checked ~ label {
-    color: #ffc700;    
+    color: #ffc700;
 }
 
 .rate:not(:checked) > label:hover,
 .rate:not(:checked) > label:hover ~ label {
-    color: #deb217;  
+    color: #deb217;
 }
 
 .rate > input:checked + label:hover,

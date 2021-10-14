@@ -156,4 +156,23 @@ public class RestaurantController {
     			return "redirect:/view/restaurant/" + id;
         }
 	}
+	
+	@GetMapping("/show/restaurant/by/category/{type}")
+	public String getRestaurantByType(Model model, HttpSession session, @PathVariable("type") String type) {
+		// check if there's any user login, if yes, set the session, otherwise return null; ( we use it to display front-end button)
+		Long loginUserId = (Long) session.getAttribute("user_id");
+		Boolean isUserLogin = false;
+		if(loginUserId != null) {
+			isUserLogin = true;
+		} else {
+			isUserLogin = false;
+		}
+		model.addAttribute("isUserLogin", isUserLogin);
+		
+		// System.out.print
+		List<Restaurant> allRestaurants = this.restaurantService.findAllRestaurantByType(type);
+		// System.out.println(allRestaurants);
+		model.addAttribute("allRestaurants", allRestaurants);
+		return "restaurant/showall.jsp";
+	}
 }

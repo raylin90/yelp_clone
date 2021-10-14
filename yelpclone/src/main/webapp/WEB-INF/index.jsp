@@ -35,8 +35,6 @@
                         Action
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Write a Review</a></li>
-                        <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="/create/restaurant">Create a Restaurant</a></li>
                         </ul>
                     </li>
@@ -70,7 +68,17 @@
     <!-- main content -->
     <div class="container mt-5">
         <h4 class="text-center">Top Restaurant by Cuisine Type:</h4>
-        
+        <div class="categories d-flex justify-content-between">
+            <a href="/show/restaurant/by/category/fine dining" class="text-secondary text-decoration-none">Fine Dining</a>
+            <a href="/show/restaurant/by/category/casual dining" class="text-secondary text-decoration-none">Casual Dining</a>
+            <a href="/show/restaurant/by/category/family style" class="text-secondary text-decoration-none">Family Style</a>
+            <a href="/show/restaurant/by/category/fast food" class="text-secondary text-decoration-none">Fast Food</a>
+            <a href="/show/restaurant/by/category/food truck" class="text-secondary text-decoration-none">Food Truck</a>
+            <a href="/show/restaurant/by/category/buffet" class="text-secondary text-decoration-none">Buffet</a>
+            <a href="/show/restaurant/by/category/pub" class="text-secondary text-decoration-none">Pub</a>
+            <a href="/show/restaurant/by/category/barbecue grill" class="text-secondary text-decoration-none">Barbecue Grill</a>
+        </div>
+        <hr>
         <div class="content d-flex justify-content-center flex-wrap">
             <c:forEach items='${allRestaurants}' var='restaurant'>
                 <div class="card m-3" style="width: 18rem;">

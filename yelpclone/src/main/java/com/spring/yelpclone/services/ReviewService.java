@@ -1,7 +1,6 @@
 package com.spring.yelpclone.services;
 
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.spring.yelpclone.models.Restaurant;
@@ -70,4 +69,5 @@ public class ReviewService {
 //		System.out.println(totalRating);
 		return totalRating;
 	}
+
 }

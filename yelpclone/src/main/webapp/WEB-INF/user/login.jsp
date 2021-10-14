@@ -30,12 +30,10 @@
                     </li>
                     <!-- navbar drop down link -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="/write/a/review" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Action
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Write a Review</a></li>
-                        <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="/create/restaurant">Create a Restaurant</a></li>
                         </ul>
                     </li>

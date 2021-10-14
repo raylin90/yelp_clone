@@ -6,10 +6,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${oneRestaurant.name} - Menu</title>
+<title>Show Restaurants By Category</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
 <link rel="short cut icon" type="image/png" href="/images/favicon.png">
+<link rel="stylesheet" href="/css/rating.css">
+<link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
@@ -58,39 +60,22 @@
 
     <div class="container mt-5">
         <div class="row">
-            <div class="col-8">
-                <h3>Menu for ${oneRestaurant.name}</h3>
-                <c:forEach items='${oneRestaurant.menus}' var='menu'>
-                    <hr>
-                    <div class="one-menu d-flex justify-content-between">
-                        <div class="left d-flex">
-                            <img class="rounded me-2" style="width: 80px;" src="${menu.image_url}" alt=${menu.title}>
-                            <div class="content">
-                                <h6 class="text-decoration-underline">${menu.title}</h6>
-                                <p>${menu.description}</p>
-                            </div>
-                        </div>
-                        <div class="right d-flex flex-column align-items-end">
-                            <h6>${menu.price}</h6>
-                            <a href="/edit/restaurant/${oneRestaurant.id}/menu/${menu.id}" class="btn btn-outline-success btn-sm" style="width:59.8px">Edit</a>
-                            <a href="/delete/restaurant/${oneRestaurant.id}/menu/${menu.id}" class="btn btn-outline-danger btn-sm">Delete</a>
-                        </div>
+            <div class="col-6">
+                <h3>All Results:</h3>
+
+
+                <c:forEach items='${allRestaurants}' var='restaurant'>
+                    <div class="ratings d-inline-block">
+                        <div class="empty-stars"></div>
+                        <div class="full-stars" style="--percentage: <c:out value='${review.reviewOverallRating}'/>;"></div>
                     </div>
+
+                    <p>${restaurant.name}</p>
+                    <p>${restaurant.reviewOverallRating}</p>
+                    <p>${restaurant.reviewOverallCount}</p>
+                    <p>${restaurant.category}</p>
                 </c:forEach>
             </div>
-            <div class="col-4">
-                <a href="/create/menu/restaurant/${oneRestaurant.id}">Want to Create a Menu?</a>
-                <div class="info border rounded p-3 mt-2">
-                    <a class="d-block" href=${oneRestaurant.webAddress}>${oneRestaurant.webAddress}</a>
-                    <hr>
-                    <h5 class="mt-2">${oneRestaurant.phone}</h5>
-                    <hr>
-                    <p class="text-secondary">${oneRestaurant.address1} ${oneRestaurant.address2} ${oneRestaurant.city}, ${oneRestaurant.state}, ${oneRestaurant.zipCode}</p>
-                </div>
-            </div>
         </div>
-    </div>
-
-
 </body>
 </html>
