@@ -69,34 +69,22 @@ public class RestaurantController {
 		Restaurant oneRestaurant = this.restaurantService.findOneRestaurant(id);
 		model.addAttribute("oneRestaurant", oneRestaurant);
 		
-		// how many count of review(s) per restaurant
-		int count = oneRestaurant.getReviews().size();
-		model.addAttribute("count", count);
-
+		// find all the reviews
 		List<Review> reviews = this.reviewService.findAllReviewsByRestaurant(id);
 		model.addAttribute("reviews", reviews);
 		
-		// get the average review percentage per restaurant
-		double sum = 0;
-		for(int i = 0; i < reviews.size(); i++) {
-			// get the rating percentage (it's a string with % at end)
-			String strRating = reviews.get(i).getRating();
-			// System.out.println(strRating);
-			// remove the % at the end
-			String newStrRating = strRating.substring(0, strRating.length()-1);
-			// System.out.println(newStrRating);
-			// parse it to double
-			double numRating = Double.parseDouble(newStrRating);
-			// System.out.println(numRating);
-			sum += numRating;
-		}
-		// find the average
-		double avg = sum / count;
-		// convert back to string with %
-		String totalRating = String.valueOf(avg + "%");
-		System.out.println(totalRating);
-		model.addAttribute("totalRating", totalRating);		
+		// how many count of review(s) per restaurant
+		int count = reviews.size();
+		System.out.println(count);
+		model.addAttribute("count", count);
 		
+		if(count == 0) {
+			String totalRating = "0%";
+			model.addAttribute("totalRating", totalRating);	
+		} else {
+			String totalRating = this.reviewService.findAvgReview(reviews, count);
+			model.addAttribute("totalRating", totalRating);	
+		}
 		return "restaurant/view.jsp";
 	}
 	

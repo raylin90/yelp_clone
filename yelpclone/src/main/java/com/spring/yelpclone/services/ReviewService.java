@@ -47,4 +47,27 @@ public class ReviewService {
 	public List<Review> findAllReviewsByRestaurant(Long restaurantId) {
 		return (List<Review>) this.reviewRepo.findByrestaurant_id(restaurantId);
 	}
+
+	public String findAvgReview(List<Review> reviews, int count) {
+		// get the average review percentage per restaurant
+		double sum = 0;
+		for(int i = 0; i < reviews.size(); i++) {
+			// get the rating percentage (it's a string with % at end)
+			String strRating = reviews.get(i).getRating();
+			// System.out.println(strRating);
+			// remove the % at the end
+			String newStrRating = strRating.substring(0, strRating.length()-1);
+			// System.out.println(newStrRating);
+			// parse it to double
+			double numRating = Double.parseDouble(newStrRating);
+			// System.out.println(numRating);
+			sum += numRating;
+		}
+		// find the average
+		double avg = sum / count;
+		// convert back to string with %
+		String totalRating = String.valueOf(avg + "%");
+		System.out.println(totalRating);
+		return totalRating;
+	}
 }

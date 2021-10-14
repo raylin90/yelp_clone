@@ -92,9 +92,9 @@
             <div class="col-3 float-right">
                 <!-- Google Map API -->
                 <div id="map" style="height: 300px; width: 300px;"></div>
-                <!-- <script async
+                <script async
                     src="https://maps.googleapis.com/maps/api/js?callback=initMap">
-                </script> -->
+                </script>
                 <p hidden id="address">${oneRestaurant.address1} ${oneRestaurant.address2} ${oneRestaurant.city}, ${oneRestaurant.state}, ${oneRestaurant.zipCode}</p>
                 <p hidden id="zip">${oneRestaurant.zipCode},US</p>
             </div>
@@ -134,10 +134,6 @@
             </div>
         </div>
     </div>
-
-
-
-<!-- 
 
     <script>
         // make open weather API call
@@ -234,6 +230,6 @@
                 mapDetailWindow.open(map, marker);
             });
         };
-    </script> -->
+    </script>
 </body>
 </html>

@@ -10,6 +10,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
 <link rel="short cut icon" type="image/png" href="/images/favicon.png">
+<link rel="stylesheet" href="/css/rating.css">
 </head>
 
 <body>
@@ -70,14 +71,19 @@
     <div class="container mt-5">
         <h4 class="text-center">Top Restaurant by Cuisine Type:</h4>
         
-        <div class="content d-flex justify-content-center">
+        <div class="content d-flex justify-content-center flex-wrap">
             <c:forEach items='${allRestaurants}' var='restaurant'>
-                <div class="card me-3" style="width: 18rem;">
-                    <img src="..." class="card-img-top" alt="...">
+                <div class="card m-3" style="width: 18rem;">
+                    <img src="/images/adv2.png" class="card-img-top" alt="card img">
                     <div class="card-body">
                         <h5 class="card-title"><a href="/view/restaurant/${restaurant.id}">${restaurant.name}</a></h5>
                         <p class="card-text m-0">${restaurant.category}</p>
                         <p class="card-text">${restaurant.city}, ${restaurant.state}</p>
+                        <div class="ratings d-inline-block">
+                            <div class="empty-stars"></div>
+                            <div class="full-stars" style="--percentage: <c:out value='${totalRating}'/>;"></div>
+                        </div>
+                        <p class="d-inline-block">${count} reviews</p>
                         <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
