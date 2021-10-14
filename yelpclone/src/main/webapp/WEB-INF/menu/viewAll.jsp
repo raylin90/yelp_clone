@@ -75,7 +75,7 @@
                         <div class="right d-flex flex-column align-items-end">
                             <h6 class="">${menu.price}</h6>
                             <a href="/view/restaurant/${oneRestaurant.id}/menus/${menu.id}" class="btn btn-outline-success btn-sm" style="width:59.8px">Edit</a>
-                            <a href="" class="btn btn-outline-danger btn-sm">Delete</a>
+                            <a href="/delete/restaurant/${oneRestaurant.id}/menus/${menu.id}" class="btn btn-outline-danger btn-sm">Delete</a>
                         </div>
                     </div>
                 </c:forEach>

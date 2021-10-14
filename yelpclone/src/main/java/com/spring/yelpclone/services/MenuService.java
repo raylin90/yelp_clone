@@ -38,4 +38,8 @@ public class MenuService {
 		m.setRestaurant(oneRestaurant);
 		return this.menuRepo.save(m);
 	}
+
+	public void deleteMenuByid(Long menuId) {
+		this.menuRepo.deleteById(menuId);;
+	}
 }
