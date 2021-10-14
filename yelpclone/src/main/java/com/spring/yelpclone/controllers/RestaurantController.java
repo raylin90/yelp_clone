@@ -12,13 +12,18 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.spring.yelpclone.models.Restaurant;
+import com.spring.yelpclone.models.Review;
 import com.spring.yelpclone.services.RestaurantService;
+import com.spring.yelpclone.services.ReviewService;
 
 @Controller
 public class RestaurantController {
 	
 	@Autowired
 	private RestaurantService restaurantService;
+	
+	@Autowired
+	private ReviewService reviewService;
 	
 	// base route for all the restaurant
 	@GetMapping("/")
@@ -63,6 +68,9 @@ public class RestaurantController {
 	public String viewOneRestaurant(@PathVariable("id") Long id, Model model) {
 		Restaurant oneRestaurant = this.restaurantService.findOneRestaurant(id);
 		model.addAttribute("oneRestaurant", oneRestaurant);
+		List<Review> reviews = this.reviewService.findAllReviewsByRestaurant(id);
+		System.out.println(reviews);
+		model.addAttribute("reviews", reviews);
 		return "restaurant/view.jsp";
 	}
 	

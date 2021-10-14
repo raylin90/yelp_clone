@@ -1,5 +1,7 @@
 package com.spring.yelpclone.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.spring.yelpclone.models.Restaurant;
@@ -40,5 +42,10 @@ public class ReviewService {
 		newReview.setRestaurant(r);
 		newReview.setUser(u);
 		return this.reviewRepo.save(newReview);
+	}
+
+	public List<Review> findAllReviewsByRestaurant(Long restaurantId) {
+		System.out.println(restaurantId);
+		return (List<Review>) this.reviewRepo.findByrestaurant_id(restaurantId);
 	}
 }

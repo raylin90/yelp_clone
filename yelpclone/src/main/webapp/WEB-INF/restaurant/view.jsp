@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
 
 <!DOCTYPE html>
 <html>
@@ -10,6 +11,33 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
 <link rel="short cut icon" type="image/png" href="/images/favicon.png">
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<link rel="stylesheet" href="/css/rating.css">
+<style>
+    .stars-outer {
+    position: relative;
+    display: inline-block;
+    }
+
+    .stars-inner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 0;
+    }
+
+    .stars-outer::before {
+        content: "\2605 \2605 \2605 \2605 \2605";
+        width: 90%;
+        background: linear-gradient(90deg, var(30%));
+        content: '★★★★★';
+        letter-spacing: 3px;
+        background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+    }
+</style>
 </head>
 
 <body>
@@ -84,14 +112,36 @@
             <div class="col-3 float-right">
                 <!-- Google Map API -->
                 <div id="map" style="height: 300px; width: 300px;"></div>
-                <script async
+                <!-- <script async
                     src="https://maps.googleapis.com/maps/api/js?callback=initMap">
-                </script>
+                </script> -->
                 <p hidden id="address">${oneRestaurant.address1} ${oneRestaurant.address2} ${oneRestaurant.city}, ${oneRestaurant.state}, ${oneRestaurant.zipCode}</p>
                 <p hidden id="zip">${oneRestaurant.zipCode},US</p>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-6">
+                <h4 >Recommended Reviews</h4>
+                <c:forEach items='${reviews}' var='review'>
+                    <h6>${review.user.firstName} ${review.user.lastName}</h6>
+                    <h6><c:out value='${review.rating}'/></h6>
+                    <div class="ratings">
+                        <div class="empty-stars"></div>
+                        <div class="full-stars" style="--percentage: <c:out value='${review.rating}'/>;"></div>
+                    </div>
+                    <p>${review.comment}</p>
+
+                </c:forEach>
+                
+            </div>
+        </div>
     </div>
+
+
+
+<!-- 
+
     <script>
         // make open weather API call
         getCurrentWeather();
@@ -101,7 +151,7 @@
             axios.get(`https://api.openweathermap.org/data/2.5/weather?`, {
                 params: {
                     "zip" : zipCode,
-                    "appid": "{WEATHER API KEY}",
+                    "appid": "2b04279bdb925dadd93e1d10246bbfaa",
                 }
             })
             .then(function(response) {
@@ -131,10 +181,9 @@
             return fahrenheit;
         }
 
-    </script>
-    <script>
+
         getGeoCode()
-        // function convert the address into geocode
+        // function convert the address into geocode for google Map
         function getGeoCode() {
 
             const address = document.getElementById("address").innerText;
@@ -188,6 +237,6 @@
                 mapDetailWindow.open(map, marker);
             });
         };
-    </script>
+    </script> -->
 </body>
 </html>
