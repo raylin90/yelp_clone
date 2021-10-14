@@ -45,7 +45,6 @@ public class ReviewService {
 	}
 
 	public List<Review> findAllReviewsByRestaurant(Long restaurantId) {
-		System.out.println(restaurantId);
 		return (List<Review>) this.reviewRepo.findByrestaurant_id(restaurantId);
 	}
 }

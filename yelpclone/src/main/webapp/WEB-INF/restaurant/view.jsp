@@ -14,32 +14,6 @@
 <link rel="short cut icon" type="image/png" href="/images/favicon.png">
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <link rel="stylesheet" href="/css/rating.css">
-<style>
-    .stars-outer {
-    position: relative;
-    display: inline-block;
-    }
-
-    .stars-inner {
-        position: absolute;
-        top: 0;
-        left: 0;
-        white-space: nowrap;
-        overflow: hidden;
-        width: 0;
-    }
-
-    .stars-outer::before {
-        content: "\2605 \2605 \2605 \2605 \2605";
-        width: 90%;
-        background: linear-gradient(90deg, var(30%));
-        content: '★★★★★';
-        letter-spacing: 3px;
-        background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-    }
-</style>
 </head>
 
 <body>
@@ -91,7 +65,11 @@
         <img src="/images/adv2.png" alt="main adv." class="rounded" style="height: 70vh; width:100vw; object-fit: cover;">
         <form class="position-absolute" style="top: 43vh; left: 20vw">
             <h1 class="fs-1 fw-bold">${oneRestaurant.name}</h1>
-            <h3>rating</h3>
+            <div class="ratings d-inline-block">
+                <div class="empty-stars"></div>
+                <div class="full-stars" style="--percentage: <c:out value='${totalRating}'/>;"></div>
+            </div>
+            <p class="d-inline-block">${count} reviews</p>
             <h3 class="fs-6">${oneRestaurant.category}</h3>
         </form>
     </div>
