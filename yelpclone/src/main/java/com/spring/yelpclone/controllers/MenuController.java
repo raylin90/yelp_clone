@@ -32,7 +32,7 @@ public class MenuController {
 	
 	// page to view all menus for particular restaurant
 	@GetMapping("/view/restaurant/{id}/menus")
-	public String viewAllMenus(@PathVariable("id") Long id, Model model, HttpSession session ,Model model2) {
+	public String viewAllMenus(@PathVariable("id") Long id, Model model, HttpSession session) {
 		// check if there's any user login, if yes, set the session, otherwise return null; ( we use it to display front-end button)
 		Long loginUserId = (Long) session.getAttribute("user_id");
 		Boolean isUserLogin = false;
@@ -41,7 +41,7 @@ public class MenuController {
 		} else {
 			isUserLogin = false;
 		}
-		model2.addAttribute("isUserLogin", isUserLogin);
+		model.addAttribute("isUserLogin", isUserLogin);
 		// System.out.println(isUserLogin);
 		
 		Restaurant oneRestaurant = this.restaurantService.findOneRestaurant(id);
@@ -51,7 +51,17 @@ public class MenuController {
 	
 	// create a menu for particular restaurant
 	@GetMapping("/create/menu//restaurant/{id}")
-	public String createMenu(@PathVariable("id") Long id, Model model) {
+	public String createMenu(@PathVariable("id") Long id, Model model, HttpSession session) {
+		// check if there's any user login, if yes, set the session, otherwise return null; ( we use it to display front-end button)
+		Long loginUserId = (Long) session.getAttribute("user_id");
+		Boolean isUserLogin = false;
+		if(loginUserId != null) {
+			isUserLogin = true;
+		} else {
+			isUserLogin = false;
+		}
+		model.addAttribute("isUserLogin", isUserLogin);
+		
 		Restaurant oneRestaurant = this.restaurantService.findOneRestaurant(id);
 		model.addAttribute("oneRestaurant", oneRestaurant);
 		return "menu/create.jsp";
@@ -97,8 +107,18 @@ public class MenuController {
 		return "redirect:/view/restaurant/" + id + "/menus";
 	}
 	
-	@GetMapping("/view/restaurant/{id}/menus/{id2}")
-	public String editMenu(@PathVariable("id") Long restId, @PathVariable("id2") Long menuId, Model model) {
+	@GetMapping("/edit/restaurant/{id}/menu/{id2}")
+	public String editMenu(@PathVariable("id") Long restId, @PathVariable("id2") Long menuId, Model model, HttpSession session) {
+		// check if there's any user login, if yes, set the session, otherwise return null; ( we use it to display front-end button)
+		Long loginUserId = (Long) session.getAttribute("user_id");
+		Boolean isUserLogin = false;
+		if(loginUserId != null) {
+			isUserLogin = true;
+		} else {
+			isUserLogin = false;
+		}
+		model.addAttribute("isUserLogin", isUserLogin);
+		
 		Restaurant oneRestaurant = this.restaurantService.findOneRestaurant(restId);
 		model.addAttribute("oneRestaurant", oneRestaurant);
 		Menu menu = this.menuService.findMenuById(menuId);
@@ -106,7 +126,7 @@ public class MenuController {
 		return "menu/edit.jsp";
 	}
 	
-	@PostMapping("/update/restaurant/{id}/menus/{id2}")
+	@PostMapping("/update/restaurant/{id}/menu/{id2}")
 	public String updateMenu(@PathVariable("id") Long restId, @PathVariable("id2") Long menuId, @RequestParam("title") String title, @RequestParam("description") String description, @RequestParam("price") String price, @RequestParam("image_url") MultipartFile file, RedirectAttributes redirectAttributes) {
 		Restaurant oneRestaurant = this.restaurantService.findOneRestaurant(restId);
 		// check if input is number or not, if yes, process, if not, reject the request
@@ -114,11 +134,10 @@ public class MenuController {
 			Double.parseDouble(price);
 		} catch (NumberFormatException e) {
 			redirectAttributes.addFlashAttribute("message", "please enter a valid number");
-			return "redirect:/view/restaurant/" + restId+ "/menus/" + menuId;
+			return "redirect:/edit/restaurant/" + restId+ "/menu/" + menuId;
 		}
 		// if user uploaded a file
 		if(!file.isEmpty()) {
-			System.out.println("not empty");
 			try {
 				// convert the file to byte code
 				byte[] bytes = file.getBytes();
@@ -129,7 +148,7 @@ public class MenuController {
 				// this is going to actually make a record in our DB about the location of the uploaded file
 				String url = "/images/" + file.getOriginalFilename();
 				// save the information into database
-				this.menuService.saveMenu(oneRestaurant, title.toUpperCase(), description, price, url , menuId);
+				this.menuService.updateMenu(oneRestaurant, title.toUpperCase(), description, price, url , menuId);
 			} catch(IOException e) {
 				// if running into error, print the error
 				e.printStackTrace();
@@ -138,9 +157,7 @@ public class MenuController {
 		}
 		// if user didn't upload a file
 		if(file.isEmpty()) {
-			System.out.println("empty");
-			String url = "/images/default.png";
-			this.menuService.saveMenu(oneRestaurant, title.toUpperCase(), description, price, url, menuId);
+			this.menuService.updateMenu(oneRestaurant, title.toUpperCase(), description, price, menuId);
 		}
 		
 		return "redirect:/view/restaurant/" + restId + "/menus";

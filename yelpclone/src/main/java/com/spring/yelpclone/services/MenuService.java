@@ -28,7 +28,7 @@ public class MenuService {
 		return this.menuRepo.findById(menuId).orElse(null);
 	}
 	
-	public Menu saveMenu(Restaurant oneRestaurant, String title, String description, String price, String url,
+	public Menu updateMenu(Restaurant oneRestaurant, String title, String description, String price, String url,
 			Long menuId) {
 		Menu m = this.menuRepo.findById(menuId).orElse(null);
 		m.setTitle(title);
@@ -38,8 +38,22 @@ public class MenuService {
 		m.setRestaurant(oneRestaurant);
 		return this.menuRepo.save(m);
 	}
+	
+	public Menu updateMenu(Restaurant oneRestaurant, String title, String description, String price, Long menuId) {
+		Menu m = this.menuRepo.findById(menuId).orElse(null);
+		m.setTitle(title);
+		m.setDescription(description);
+		m.setPrice(price);
+		// get the url path from database so if user didn't upload pic_url, it will use the one at database instead of override it
+		String url = m.getImage_url();
+		m.setImage_url(url);
+		m.setRestaurant(oneRestaurant);
+		return this.menuRepo.save(m);
+		
+	}
 
 	public void deleteMenuByid(Long menuId) {
 		this.menuRepo.deleteById(menuId);;
 	}
+
 }

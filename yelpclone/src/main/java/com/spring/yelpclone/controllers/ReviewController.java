@@ -36,7 +36,7 @@ public class ReviewController {
 	
 	// view review page
 	@GetMapping("/create/review/restaurant/{id}")
-	public String createReview(@PathVariable("id") Long id,  HttpSession session, Model model, @ModelAttribute("review") Review review) {
+	public String createReview(@PathVariable("id") Long id,  HttpSession session, Model model, @ModelAttribute("review") Review review, RedirectAttributes redirectAttribute) {
 		
 		// check if there's any user login, if yes, set the session, otherwise return null; ( we use it to display front-end button)
 		Long loginUserId = (Long) session.getAttribute("user_id");
@@ -45,6 +45,8 @@ public class ReviewController {
 			isUserLogin = true;
 		} else {
 			isUserLogin = false;
+			redirectAttribute.addFlashAttribute("message", "Please login before posting a review");
+			return "redirect:/login";
 		}
 		// System.out.println(isUserLogin);
 		// System.out.println(loginUserId);
@@ -58,9 +60,9 @@ public class ReviewController {
 	
 	//save review
 	@PostMapping("/save/review/restaurant/{id}")
-	public String saveReview(@PathVariable("id") Long id, @RequestParam("rating") String rating, @RequestParam("comment") String comment, @RequestParam("pic_url") MultipartFile file, RedirectAttributes redirectAttributes, HttpSession session) {
+	public String saveReview(@PathVariable("id") Long id, @RequestParam(value="rating", required=false) String rating, @RequestParam("comment") String comment, @RequestParam("pic_url") MultipartFile file, RedirectAttributes redirectAttributes, HttpSession session) {
 
-		// System.out.println(rating);
+//		 System.out.println(rating);
 		// System.out.println(comment);
 		// System.out.println(file);
 		// validation

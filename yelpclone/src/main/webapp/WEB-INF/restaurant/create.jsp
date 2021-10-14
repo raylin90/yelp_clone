@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix='form' uri='http://www.springframework.org/tags/form'%>
+<%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
 
 <!DOCTYPE html>
 <html>
@@ -39,7 +40,6 @@
                         </ul>
                     </li>
                 </ul>
-                <!-- navbar search and submit -->
                 <div>
                     <!-- display login/register/logout button base on whether user login or not -->
                     <c:set var = "isUserLogin" value = "${isUserLogin}"/>

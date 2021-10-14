@@ -106,7 +106,7 @@
                         <label for="star3" title="text">3 stars</label>
                         <input type="radio" id="star2" name="rating" value="40%" />
                         <label for="star2" title="text">2 stars</label>
-                        <input type="radio" id="star1" name="rating" value="20%" />
+                        <input type="radio" id="star1" name="rating" value="20%" requireds/>
                         <label for="star1" title="text">1 star</label>
                     </p>
                     <p>

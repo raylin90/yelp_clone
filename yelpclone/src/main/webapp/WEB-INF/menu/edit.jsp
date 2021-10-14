@@ -64,7 +64,7 @@
             <div class="col-8">
                 <h3>Edit Menu ${menu.title}</h3>
 
-                <form action='/update/restaurant/${oneRestaurant.id}/menus/${menu.id}' method='post' enctype='multipart/form-data'>
+                <form action='/update/restaurant/${oneRestaurant.id}/menu/${menu.id}' method='post' enctype='multipart/form-data'>
                 <p>
                     <label class="form-label" for='title'>Menu title: </label>
                     <input class="form-control" name='title' value=${menu.title} required/>

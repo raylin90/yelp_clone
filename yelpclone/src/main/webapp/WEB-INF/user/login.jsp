@@ -62,6 +62,7 @@
         <div class="row">
             <div class="col-6 text-center">
                 <h3>Login to Yum!</h3>
+                <div class="text-danger">${message}</div>
                 <form:form action='/return/user' method='post' modelAttribute='newLogin'>
                 <p>
                     <form:label path='email' class="form-label">Email: </form:label>
@@ -71,7 +72,7 @@
                     <form:label path='password' class="form-label">Password: </form:label>
                     <form:input type="password" path='password' class="form-control"/>
                 </p>
-                <input class="btn btn-secondary form-control"type='submit' value='Sign Up'/>
+                <input class="btn btn-secondary form-control"type='submit' value='Login'/>
                 <form:errors path='password' class="text-danger"/>
                 <form:errors path='email' class="text-danger"/>
                 </form:form>

@@ -47,14 +47,32 @@ public class RestaurantController {
 	
 	// route to create a new restaurant
 	@GetMapping("/create/restaurant")
-	public String createNewRest(@ModelAttribute("restaurant") Restaurant restaurant) {
+	public String createNewRest(@ModelAttribute("restaurant") Restaurant restaurant, Model model, HttpSession session) {
+		// check if there's any user login, if yes, set the session, otherwise return null; ( we use it to display front-end button)
+		Long loginUserId = (Long) session.getAttribute("user_id");
+		Boolean isUserLogin = false;
+		if(loginUserId != null) {
+			isUserLogin = true;
+		} else {
+			isUserLogin = false;
+		}
+		model.addAttribute("isUserLogin", isUserLogin);
 		return "restaurant/create.jsp";
 	}
 	
 	// POST route to add the new restaurant to database
 	@PostMapping("/add/restaurant")
-	public String addNewRest(@Valid @ModelAttribute("restaurant") Restaurant restaurant, BindingResult result) {
-		System.out.println(restaurant);
+	public String addNewRest(@Valid @ModelAttribute("restaurant") Restaurant restaurant, BindingResult result, HttpSession session, Model model) {
+		// check if there's any user login, if yes, set the session, otherwise return null; ( we use it to display front-end button)
+		Long loginUserId = (Long) session.getAttribute("user_id");
+		Boolean isUserLogin = false;
+		if(loginUserId != null) {
+			isUserLogin = true;
+		} else {
+			isUserLogin = false;
+		}
+		model.addAttribute("isUserLogin", isUserLogin);
+		// System.out.println(restaurant);
         if (result.hasErrors()) {
             return "restaurant/create.jsp";
         } else {
@@ -65,7 +83,17 @@ public class RestaurantController {
 	
 	// view a restaurant
 	@GetMapping("/view/restaurant/{id}")
-	public String viewOneRestaurant(@PathVariable("id") Long id, Model model) {
+	public String viewOneRestaurant(@PathVariable("id") Long id, Model model, HttpSession session) {
+		// check if there's any user login, if yes, set the session, otherwise return null; ( we use it to display front-end button)
+		Long loginUserId = (Long) session.getAttribute("user_id");
+		Boolean isUserLogin = false;
+		if(loginUserId != null) {
+			isUserLogin = true;
+		} else {
+			isUserLogin = false;
+		}
+		model.addAttribute("isUserLogin", isUserLogin);
+		
 		Restaurant oneRestaurant = this.restaurantService.findOneRestaurant(id);
 		model.addAttribute("oneRestaurant", oneRestaurant);
 		
@@ -92,7 +120,17 @@ public class RestaurantController {
 	
 	// edit a restaurant (view page)
 	@GetMapping("/edit/restaurant/{id}")
-	public String editOneRestaurant(@PathVariable("id") Long id, Model model) {
+	public String editOneRestaurant(@PathVariable("id") Long id, Model model, HttpSession session) {
+		// check if there's any user login, if yes, set the session, otherwise return null; ( we use it to display front-end button)
+		Long loginUserId = (Long) session.getAttribute("user_id");
+		Boolean isUserLogin = false;
+		if(loginUserId != null) {
+			isUserLogin = true;
+		} else {
+			isUserLogin = false;
+		}
+		model.addAttribute("isUserLogin", isUserLogin);
+		
 		Restaurant oneRestaurant = this.restaurantService.findOneRestaurant(id);
 		model.addAttribute("oneRestaurant", oneRestaurant);
 		return "restaurant/edit.jsp";
@@ -100,7 +138,17 @@ public class RestaurantController {
 	
 	// update a restaurant (post route)
 	@PostMapping("/update/restaurant/{id}")
-	public String updateOneRestaurant(@PathVariable("id") Long id, @Valid @ModelAttribute("oneRestaurant") Restaurant restaurant, BindingResult result) {
+	public String updateOneRestaurant(@PathVariable("id") Long id, @Valid @ModelAttribute("oneRestaurant") Restaurant restaurant, BindingResult result, Model model, HttpSession session) {
+		// check if there's any user login, if yes, set the session, otherwise return null; ( we use it to display front-end button)
+		Long loginUserId = (Long) session.getAttribute("user_id");
+		Boolean isUserLogin = false;
+		if(loginUserId != null) {
+			isUserLogin = true;
+		} else {
+			isUserLogin = false;
+		}
+		model.addAttribute("isUserLogin", isUserLogin);
+		
         if (result.hasErrors()) {
             return "restaurant/edit.jsp";
         } else {

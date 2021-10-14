@@ -23,7 +23,7 @@ public class UserService {
 		}
 		// validate if the password and confirm password match or not, if not:
 		if(!newUser.getPassword().equals(newUser.getPasswordConfirm())) {
-		    result.rejectValue("confirm", "Matches", "The Confirm Password must match Password!");
+		    result.rejectValue("passwordConfirm", "Matches", "The Confirm Password must match Password!");
 		}
 		// if result have any error after above customized validation:
 		if(result.hasErrors()) {

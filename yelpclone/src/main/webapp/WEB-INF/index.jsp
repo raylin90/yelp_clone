@@ -41,7 +41,6 @@
                         </ul>
                     </li>
                 </ul>
-                <!-- navbar search and submit -->
                 <div>
                     <!-- display login/register/logout button base on whether user login or not -->
                     <c:set var = "isUserLogin" value = "${isUserLogin}"/>
