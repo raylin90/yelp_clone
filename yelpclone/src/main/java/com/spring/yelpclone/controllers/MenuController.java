@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import com.spring.yelpclone.models.Menu;
 import com.spring.yelpclone.models.Restaurant;
 import com.spring.yelpclone.services.MenuService;
 import com.spring.yelpclone.services.RestaurantService;
@@ -94,5 +95,54 @@ public class MenuController {
 		}
 		
 		return "redirect:/view/restaurant/" + id + "/menus";
+	}
+	
+	@GetMapping("/view/restaurant/{id}/menus/{id2}")
+	public String editMenu(@PathVariable("id") Long restId, @PathVariable("id2") Long menuId, Model model) {
+		Restaurant oneRestaurant = this.restaurantService.findOneRestaurant(restId);
+		model.addAttribute("oneRestaurant", oneRestaurant);
+		Menu menu = this.menuService.findMenuById(menuId);
+		model.addAttribute("menu", menu);
+		return "menu/edit.jsp";
+	}
+	
+	@PostMapping("/update/restaurant/{id}/menus/{id2}")
+	public String updateMenu(@PathVariable("id") Long restId, @PathVariable("id2") Long menuId, @RequestParam("title") String title, @RequestParam("description") String description, @RequestParam("price") String price, @RequestParam("image_url") MultipartFile file, RedirectAttributes redirectAttributes) {
+		Restaurant oneRestaurant = this.restaurantService.findOneRestaurant(restId);
+		// check if input is number or not, if yes, process, if not, reject the request
+		try {
+			Double.parseDouble(price);
+		} catch (NumberFormatException e) {
+			redirectAttributes.addFlashAttribute("message", "please enter a valid number");
+			return "redirect:/view/restaurant/" + restId+ "/menus/" + menuId;
+		}
+		// if user uploaded a file
+		if(!file.isEmpty()) {
+			System.out.println("not empty");
+			try {
+				// convert the file to byte code
+				byte[] bytes = file.getBytes();
+				// create a path where we want to store the image
+				Path path = Paths.get(uploaded_folder + file.getOriginalFilename());
+				// execute above two steps, by putting the byte code to path (save to folder)
+				Files.write(path, bytes);
+				// this is going to actually make a record in our DB about the location of the uploaded file
+				String url = "/images/" + file.getOriginalFilename();
+				// save the information into database
+				this.menuService.saveMenu(oneRestaurant, title.toUpperCase(), description, price, url , menuId);
+			} catch(IOException e) {
+				// if running into error, print the error
+				e.printStackTrace();
+			}
+			
+		}
+		// if user didn't upload a file
+		if(file.isEmpty()) {
+			System.out.println("empty");
+			String url = "/images/default.png";
+			this.menuService.saveMenu(oneRestaurant, title.toUpperCase(), description, price, url, menuId);
+		}
+		
+		return "redirect:/view/restaurant/" + restId + "/menus";
 	}
 }

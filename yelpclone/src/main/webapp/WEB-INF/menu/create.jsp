@@ -74,7 +74,7 @@
                     <textarea cols="30" rows="10" name='description' class="form-control" placeholder="Enter description..." required></textarea>
                 </p>
                 <p>
-                    <label class="form-label" for='price' >Price: </label>
+                    <label class="form-label" for='price'>Price: $$$</label>
                     <input class="form-control" name='price' required/>
                 </p>
                 <p>

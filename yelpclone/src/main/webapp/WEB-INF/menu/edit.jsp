@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix='form' uri='http://www.springframework.org/tags/form'%>
 <%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>${oneRestaurant.name} - Menu</title>
+<title>${oneRestaurant.name} - Edit Menu</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
 <link rel="short cut icon" type="image/png" href="/images/favicon.png">
@@ -61,25 +62,30 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-8">
-                <h3>Menu for ${oneRestaurant.name}</h3>
-                <c:forEach items='${oneRestaurant.menus}' var='menu'>
-                    <hr>
-                    <div class="one-menu d-flex justify-content-between">
-                        <div class="left d-flex">
-                            <img class="rounded me-2" style="width: 80px;" src="${menu.image_url}" alt=${menu.title}>
-                            <div class="content">
-                                <h6 class="text-decoration-underline">${menu.title}</h6>
-                                <p>${menu.description}</p>
-                            </div>
-                        </div>
-                        <div class="right d-flex flex-column align-items-end">
-                            <h6 class="">${menu.price}</h6>
-                            <a href="/view/restaurant/${oneRestaurant.id}/menus/${menu.id}" class="btn btn-outline-success btn-sm" style="width:59.8px">Edit</a>
-                            <a href="" class="btn btn-outline-danger btn-sm">Delete</a>
-                        </div>
-                    </div>
-                </c:forEach>
+                <h3>Edit Menu ${menu.title}</h3>
+
+                <form action='/update/restaurant/${oneRestaurant.id}/menus/${menu.id}' method='post' enctype='multipart/form-data'>
+                <p>
+                    <label class="form-label" for='title'>Menu title: </label>
+                    <input class="form-control" name='title' value=${menu.title} required/>
+                </p>
+                <p>
+                    <label class="form-label" for='description'>Description: </label>
+                    <textarea cols="30" rows="10" name='description' class="form-control" placeholder="Enter description..." required>${menu.description}</textarea>
+                </p>
+                <p>
+                    <label class="form-label" for='price' >Price: $$$</label>
+                    <input class="form-control" name='price' value=${menu.price} required/>
+                </p>
+                <p>
+                    <label class="form-label" for='image_url'>Image: </label>
+                    <input type="file" class="form-control" name='image_url' value=${menu.image_url}/>
+                </p>
+                <input class="btn btn-secondary" type='submit' value='Update'/>
+                <p class="text-danger">${message}</p>
+                </form>
             </div>
+
             <div class="col-4">
                 <a href="/create/menu/restaurant/${oneRestaurant.id}">Want to Create a Menu?</a>
                 <div class="info border rounded p-3 mt-2">

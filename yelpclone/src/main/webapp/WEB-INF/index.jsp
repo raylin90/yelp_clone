@@ -77,15 +77,25 @@
                 <div class="card m-3" style="width: 18rem;">
                     <img src="/images/adv2.png" class="card-img-top" alt="card img">
                     <div class="card-body">
-                        <h5 class="card-title"><a href="/view/restaurant/${restaurant.id}">${restaurant.name}</a></h5>
+                        <h5 class="card-title overflow-hidden text-truncate"><a href="/view/restaurant/${restaurant.id}">${restaurant.name}</a></h5>
                         <p class="card-text m-0">${restaurant.category}</p>
-                        <p class="card-text">${restaurant.city}, ${restaurant.state}</p>
+                        <p class="card-text text-truncate">${restaurant.city}, ${restaurant.state}</p>
                         <div class="ratings d-inline-block">
                             <div class="empty-stars"></div>
                             <div class="full-stars" style="--percentage: <c:out value='${restaurant.reviewOverallRating}'/>;"></div>
                         </div>
-                        <p class="d-inline-block"><fmt:formatNumber value="${restaurant.reviewOverallCount}" minFractionDigits="0" maxFractionDigits="0"/> reviews</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <!-- display review count singular or plural base on number -->
+                        <c:set var = "count" value = "${restaurant.reviewOverallCount}"/>
+                        <c:if test = "${count == 0}">
+                            <p class="d-inline-block">0 review</p>
+                        </c:if>
+                        <c:if test = "${count == 1}">
+                            <p class="d-inline-block"><fmt:formatNumber value="${restaurant.reviewOverallCount}" minFractionDigits="0" maxFractionDigits="0"/> review</p>
+                        </c:if>
+                        <c:if test = "${count > 1}">
+                            <p class="d-inline-block"><fmt:formatNumber value="${restaurant.reviewOverallCount}" minFractionDigits="0" maxFractionDigits="0"/> reviews</p>
+                        </c:if>
+                        <a href="/create/review/restaurant/${restaurant.id}" class="btn btn-outline-success btn-sm">write a review?</a>
                     </div>
                 </div>
             </c:forEach>
