@@ -14,6 +14,7 @@ public class RestaurantService {
 	
 	// save a restaurant to database
 	public Restaurant saveRestaurant(Restaurant restaurant) {
+		restaurant.setReviewOverallRating("0%");
 		return this.restaurantRepo.save(restaurant);
 	}
 	
@@ -25,5 +26,15 @@ public class RestaurantService {
 	// find one restaurant
 	public Restaurant findOneRestaurant(Long id) {
 		return this.restaurantRepo.findById(id).orElse(null);
+	}
+
+	public Restaurant saveOverallReview(Long id, int count, String totalRating) {
+		Restaurant r = this.restaurantRepo.findById(id).orElse(null);
+		r.setReviewOverallCount(count);
+		r.setReviewOverallRating(totalRating);
+		System.out.println(r);
+		System.out.println(count);
+		System.out.println(totalRating);
+		return this.restaurantRepo.save(r);
 	}
 }

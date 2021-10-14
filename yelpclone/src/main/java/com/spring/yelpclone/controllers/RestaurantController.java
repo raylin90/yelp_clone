@@ -75,16 +75,18 @@ public class RestaurantController {
 		
 		// how many count of review(s) per restaurant
 		int count = reviews.size();
-		System.out.println(count);
+//		System.out.println(count);
 		model.addAttribute("count", count);
-		
+		String totalRating = "0%";
 		if(count == 0) {
-			String totalRating = "0%";
+			totalRating = "0%";
 			model.addAttribute("totalRating", totalRating);	
 		} else {
-			String totalRating = this.reviewService.findAvgReview(reviews, count);
+			totalRating = this.reviewService.findAvgReview(reviews, count);
 			model.addAttribute("totalRating", totalRating);	
 		}
+//		System.out.println(totalRating);
+		this.restaurantService.saveOverallReview(id, count, totalRating);
 		return "restaurant/view.jsp";
 	}
 	

@@ -67,7 +67,7 @@ public class ReviewService {
 		double avg = sum / count;
 		// convert back to string with %
 		String totalRating = String.valueOf(avg + "%");
-		System.out.println(totalRating);
+//		System.out.println(totalRating);
 		return totalRating;
 	}
 }

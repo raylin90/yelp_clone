@@ -53,6 +53,10 @@ public class Restaurant {
 	
 	private String webAddress;
 	
+	private int reviewOverallCount;
+	
+	private String reviewOverallRating;
+	
     @OneToMany(mappedBy="restaurant", fetch = FetchType.LAZY, cascade=CascadeType.ALL)
     private List<Menu> menus;
     
@@ -171,12 +175,27 @@ public class Restaurant {
 	public void setReviews(List<Review> reviews) {
 		this.reviews = reviews;
 	}
+	
+	public double getReviewOverallCount() {
+		return reviewOverallCount;
+	}
+	public void setReviewOverallCount(int reviewOverallCount) {
+		this.reviewOverallCount = reviewOverallCount;
+	}
+	public String getReviewOverallRating() {
+		return reviewOverallRating;
+	}
+	public void setReviewOverallRating(String reviewOverallRating) {
+		this.reviewOverallRating = reviewOverallRating;
+	}
 	@Override
 	public String toString() {
-		return "Restaurant [id=" + id + ", name=" + name + ", address1=" + address1 + ", address2=" + address2
-				+ ", city=" + city + ", state=" + state + ", zipCode=" + zipCode + ", category=" + category + ", phone="
-				+ phone + ", webAddress=" + webAddress + ", menus=" + menus + ", reviews=" + reviews + ", createdAt="
-				+ createdAt + ", updatedAt=" + updatedAt + "]";
+		return "Restaurant [name=" + name + ", address1=" + address1 + ", address2=" + address2 + ", city=" + city
+				+ ", state=" + state + ", zipCode=" + zipCode + ", category=" + category + ", phone=" + phone
+				+ ", webAddress=" + webAddress + ", reviewOverallCount=" + reviewOverallCount + ", reviewOverallRating="
+				+ reviewOverallRating + ", menus=" + menus + ", reviews=" + reviews + ", createdAt=" + createdAt
+				+ ", updatedAt=" + updatedAt + "]";
 	}
+
 
 }

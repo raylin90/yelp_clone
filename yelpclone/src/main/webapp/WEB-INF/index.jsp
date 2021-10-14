@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -81,9 +82,9 @@
                         <p class="card-text">${restaurant.city}, ${restaurant.state}</p>
                         <div class="ratings d-inline-block">
                             <div class="empty-stars"></div>
-                            <div class="full-stars" style="--percentage: <c:out value='${totalRating}'/>;"></div>
+                            <div class="full-stars" style="--percentage: <c:out value='${restaurant.reviewOverallRating}'/>;"></div>
                         </div>
-                        <p class="d-inline-block">${count} reviews</p>
+                        <p class="d-inline-block"><fmt:formatNumber value="${restaurant.reviewOverallCount}" minFractionDigits="0" maxFractionDigits="0"/> reviews</p>
                         <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
