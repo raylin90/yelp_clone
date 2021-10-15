@@ -11,6 +11,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
 <link rel="short cut icon" type="image/png" href="/images/favicon.png">
+<link rel="stylesheet" href="/css/footer.css">
 </head>
 
 <body>
@@ -153,7 +154,7 @@
                         <option value="Casual Dining">Casual Dining</option>
                         <option value="Family Style">Family Style</option>
                         <option value="Fast Food">Fast Food</option>
-                        <option value="Food Truck, Cart, Or Stand">Food Truck</option>
+                        <option value="Food Truck, Cart, Or Stand">Food Truck, Cart, Or Stand</option>
                         <option value="Buffet">Buffet</option>
                         <option value="Pub">Pub</option>
                         <option value="Barbecue Grill">Barbecue Grill</option>
@@ -175,5 +176,6 @@
             </div>
         </div>
     </div>
+    <p id="footer" class="fw-lighter text-center">Responsive Yelp Clone Web Application</p>
 </body>
 </html>

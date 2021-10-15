@@ -12,6 +12,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
 <link rel="short cut icon" type="image/png" href="/images/favicon.png">
 <link rel="stylesheet" href="/css/rating.css">
+<link rel="stylesheet" href="/css/footer.css">
 </head>
 
 <body>
@@ -59,8 +60,8 @@
     <!-- advertise pivture and search bar -->
     <div class="text-center position-relative">
         <img src="/images/adv2.png" alt="main adv." class="img-fluid rounded">
-        <form class="d-flex position-absolute bottom-50 end-50">
-            <input class="form-control me-2" type="search" placeholder="Search Restaurant" aria-label="Search" style="width: 30vw; max-width: 700px;">
+        <form action="/search" class="d-flex position-absolute bottom-50 end-50">
+            <input class="form-control me-2" name="word" type="search" placeholder="Search Restaurant" aria-label="Search" style="width: 30vw; max-width: 700px;">
             <button class="btn btn-outline-info" type="submit">Search</button>
         </form>
     </div>
@@ -68,12 +69,13 @@
     <!-- main content -->
     <div class="container mt-5">
         <h4 class="text-center">Top Restaurant by Cuisine Type:</h4>
+        <br>
         <div class="categories d-flex justify-content-between">
             <a href="/show/restaurant/by/category/fine dining" class="text-secondary text-decoration-none">Fine Dining</a>
             <a href="/show/restaurant/by/category/casual dining" class="text-secondary text-decoration-none">Casual Dining</a>
             <a href="/show/restaurant/by/category/family style" class="text-secondary text-decoration-none">Family Style</a>
             <a href="/show/restaurant/by/category/fast food" class="text-secondary text-decoration-none">Fast Food</a>
-            <a href="/show/restaurant/by/category/food truck" class="text-secondary text-decoration-none">Food Truck</a>
+            <a href="/show/restaurant/by/category/food truck, cart, or stand" class="text-secondary text-decoration-none">Food Truck, Cart, Or Stand</a>
             <a href="/show/restaurant/by/category/buffet" class="text-secondary text-decoration-none">Buffet</a>
             <a href="/show/restaurant/by/category/pub" class="text-secondary text-decoration-none">Pub</a>
             <a href="/show/restaurant/by/category/barbecue grill" class="text-secondary text-decoration-none">Barbecue Grill</a>
@@ -108,37 +110,6 @@
             </c:forEach>
         </div>
     </div>
-
-        <h4 class="text-center mt-5">Top Restaurant by Location:</h4>
-
-        <div class="content d-flex justify-content-center">
-            <div class="card me-3" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-            <div class="card me-3" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-            <div class="card me-3" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-        </div>
-
-        <p class="fw-lighter text-center mt-5">Responsive Yelp Clone Web Application</p>
-    </div>
+    <p id="footer" class="fw-lighter text-center">Responsive Yelp Clone Web Application</p>
 </body>
 </html>

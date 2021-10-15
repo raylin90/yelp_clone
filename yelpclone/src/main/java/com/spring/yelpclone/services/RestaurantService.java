@@ -41,4 +41,8 @@ public class RestaurantService {
 	public List<Restaurant> findAllRestaurantByType(String type) {
 		return this.restaurantRepo.findByCategory(type);
 	}
+
+	public List<Restaurant> findRestaurantByKeyWord(String word) {
+		return this.restaurantRepo.findByNameContaining(word);
+	}
 }

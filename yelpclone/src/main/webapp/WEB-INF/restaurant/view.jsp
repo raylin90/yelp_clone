@@ -14,6 +14,7 @@
 <link rel="short cut icon" type="image/png" href="/images/favicon.png">
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <link rel="stylesheet" href="/css/rating.css">
+<link rel="stylesheet" href="/css/footer.css">
 </head>
 
 <body>
@@ -67,7 +68,16 @@
                 <div class="empty-stars"></div>
                 <div class="full-stars" style="--percentage: <c:out value='${totalRating}'/>;"></div>
             </div>
-            <p class="d-inline-block">${count} reviews</p>
+            <c:set var = "count" value = "${count}"/>
+            <c:if test = "${count == 0}">
+                <p class="d-inline-block">0 review</p>
+            </c:if>
+            <c:if test = "${count == 1}">
+                <p class="d-inline-block">1 review</p>
+            </c:if>
+            <c:if test = "${count > 1}">
+                <p class="d-inline-block">${count} reviews</p>
+            </c:if>
             <h3 class="fs-6">${oneRestaurant.category}</h3>
         </form>
     </div>
@@ -196,7 +206,6 @@
                 initMap(latitudeVal, longitudeVal)
             })
             .catch(function(error) {
-                console.log("hi")
                 console.log(error)
             });
         };
@@ -229,5 +238,6 @@
             });
         };
     </script>
+    <p id="footer" class="fw-lighter text-center">Responsive Yelp Clone Web Application</p>
 </body>
 </html>

@@ -11,4 +11,6 @@ public interface RestaurantRepository extends CrudRepository<Restaurant, Long> {
 
 	List<Restaurant> findByCategory(String type);
 
+	List<Restaurant> findByNameContaining(String word);
+
 }

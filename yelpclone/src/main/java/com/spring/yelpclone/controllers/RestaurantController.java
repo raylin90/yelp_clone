@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.spring.yelpclone.models.Restaurant;
 import com.spring.yelpclone.models.Review;
 import com.spring.yelpclone.services.RestaurantService;
@@ -169,10 +171,20 @@ public class RestaurantController {
 		}
 		model.addAttribute("isUserLogin", isUserLogin);
 		
-		// System.out.print
+		// System.out.print(type);
 		List<Restaurant> allRestaurants = this.restaurantService.findAllRestaurantByType(type);
 		// System.out.println(allRestaurants);
 		model.addAttribute("allRestaurants", allRestaurants);
+		model.addAttribute("count", allRestaurants.size());
+		return "restaurant/showall.jsp";
+	}
+	
+	@GetMapping("/search")
+	public String search(@RequestParam("word") String word, Model model) {
+		System.out.println(word);
+		List<Restaurant> allRestaurants = this.restaurantService.findRestaurantByKeyWord(word);
+		model.addAttribute("allRestaurants", allRestaurants);
+		model.addAttribute("count", allRestaurants.size());
 		return "restaurant/showall.jsp";
 	}
 }

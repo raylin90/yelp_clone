@@ -12,6 +12,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-kQtW33rZJAHjgefvhyyzcGF3C5TFyBQBA13V1RKPf4uH+bwyzQxZ6CmMZHmNBEfJ" crossorigin="anonymous"></script>
 <link rel="short cut icon" type="image/png" href="/images/favicon.png">
 <link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/footer.css">
 </head>
 
 <body>
@@ -121,5 +122,6 @@
             </div>
         </div>
     </div>
+    <p id="footer" class="fw-lighter text-center">Responsive Yelp Clone Web Application</p>
 </body>
 </html>
