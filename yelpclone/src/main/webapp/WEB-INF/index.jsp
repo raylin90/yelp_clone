@@ -68,7 +68,7 @@
 
     <!-- main content -->
     <div class="container mt-5">
-        <h4 class="text-center">Top Restaurant by Cuisine Type:</h4>
+        <h4 class="text-center">Select Restaurants by Cuisine Type:</h4>
         <br>
         <div class="categories d-flex justify-content-between">
             <a href="/show/restaurant/by/category/fine dining" class="text-secondary text-decoration-none">Fine Dining</a>

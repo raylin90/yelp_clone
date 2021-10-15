@@ -117,7 +117,7 @@
                         <label class="form-label" for='pic_url'>Attach Photo</label>
                         <input type="file" class="form-control" name='pic_url'/>
                     </p>
-                    <input class="btn btn-secondary" type='submit' value='Submit'/>
+                    <input class="btn btn-secondary" type='submit' value='Post'/>
                 </form>
             </div>
         </div>

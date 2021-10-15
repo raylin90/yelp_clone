@@ -163,7 +163,7 @@ public class MenuController {
 		return "redirect:/view/restaurant/" + restId + "/menus";
 	}
 	
-	@GetMapping("/delete/restaurant/{id}/menus/{id2}")
+	@GetMapping("/delete/restaurant/{id}/menu/{id2}")
 	public String deleteMenu(@PathVariable("id") Long restId, @PathVariable("id2") Long menuId) {
 		this.menuService.deleteMenuByid(menuId);
 		return "redirect:/view/restaurant/" + restId + "/menus";

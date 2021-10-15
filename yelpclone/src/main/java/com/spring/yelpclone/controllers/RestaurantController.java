@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.spring.yelpclone.models.Restaurant;
 import com.spring.yelpclone.models.Review;
 import com.spring.yelpclone.services.RestaurantService;
@@ -159,6 +158,7 @@ public class RestaurantController {
         }
 	}
 	
+	// show restaurant result when user click category
 	@GetMapping("/show/restaurant/by/category/{type}")
 	public String getRestaurantByType(Model model, HttpSession session, @PathVariable("type") String type) {
 		// check if there's any user login, if yes, set the session, otherwise return null; ( we use it to display front-end button)
@@ -179,6 +179,7 @@ public class RestaurantController {
 		return "restaurant/showall.jsp";
 	}
 	
+	// show restaurant base on search keyword
 	@GetMapping("/search")
 	public String search(@RequestParam("word") String word, Model model) {
 		System.out.println(word);
