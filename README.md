@@ -4,10 +4,10 @@
 * one to many and many to many relationship
 * un-login user is able to perform most of tasks except submit a review
 * one user can submit many reviews, and one restaurant can have many reviews
-![ERD](/yelp_clone/yelpclone/src/main/webapp/images/ERD.png)
+![ERD](/yelpclone/src/main/webapp/images/ERD.png)
 
 2. Wireframe
-![wireframe](/yelp_clone/yelpclone/src/main/webapp/images/yelp_clone_wireframe.png)
+![wireframe](/yelpclone/src/main/webapp/images/yelp_clone_wireframe.png)
 
 3. Technique Used:
 * used JSP(JavaServer Pages) and JSTL(JavaServer Pages Standard Tag Library) for front-end view page
