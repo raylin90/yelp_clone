@@ -40,21 +40,16 @@ __Built with__
 ------------------
 ### Installation
 ```
-# Clone this repository
-$ copy repo URL https://github.com/raylin90/yelp_clone.git
+# copy repository link
+$ repo URL: https://github.com/raylin90/yelp_clone.git
 
 # Open SpringToolSuite
-# Windows - Show View - Others... - Git Repositories - Clone a Git repository
+# SpringToolSuite - Windows - Show View - Others... - Git Repositories - Clone a Git repository
 # Import Git repo into your local machine
 
 # Insert API keys
 * add Goole Map API Key on path (yelp_clone/yelpclone/src/main/webapp/WEB-INF/restaurant/view.jsp), line 104
 * add OpenWeather API Key on path (yelp_clone/yelpclone/src/main/webapp/WEB-INF/restaurant/view.jsp), line 155
-
-
-# Run the app
-$ pipenv shell
-# if your terminal command  starts with (project name), then you are in virtual environment
 
 # Run the app as Spring Boot App
 # Navigate to our local host
